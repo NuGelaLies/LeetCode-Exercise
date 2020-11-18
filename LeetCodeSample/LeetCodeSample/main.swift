@@ -27,6 +27,16 @@ example(title: "Two Sum") {
     print(indexs)
 }
 
-example(title: "Linked Node Add Two Sum") {
+example(title: "Linked Node Add Two Num") {
+    let list1 = LinkedList<Int>()
+    let list2 = LinkedList<Int>()
     
+    list1.appends(2,4,3)
+    list2.appends(5,6,4)
+    
+    print(" list1 = \(list1.debugDescription) ")
+    print(" list2 = \(list2.debugDescription) ")
+    let result = algo.addTwoNum(default: 0, lhs: list1, rhs: list2)
+
+    print(" result = \(result.debugDescription) ")
 }
