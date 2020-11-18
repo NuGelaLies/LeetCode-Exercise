@@ -16,6 +16,7 @@
 		E1AB94DD255E3663000C165C /* LinkedList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94DC255E3663000C165C /* LinkedList+Extensions.swift */; };
 		E1AB94E0255E5FEC000C165C /* LinkNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94DF255E5FEC000C165C /* LinkNode+Extension.swift */; };
 		E1AB94E4255E8459000C165C /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94E3255E8459000C165C /* Algorithm.swift */; };
+		E1AB94E7255E86D4000C165C /* algo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94E6255E86D4000C165C /* algo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 		E1AB94DC255E3663000C165C /* LinkedList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkedList+Extensions.swift"; sourceTree = "<group>"; };
 		E1AB94DF255E5FEC000C165C /* LinkNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkNode+Extension.swift"; sourceTree = "<group>"; };
 		E1AB94E3255E8459000C165C /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
+		E1AB94E6255E86D4000C165C /* algo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = algo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				E1AB94E3255E8459000C165C /* Algorithm.swift */,
+				E1AB94E6255E86D4000C165C /* algo.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				E1AB94E4255E8459000C165C /* Algorithm.swift in Sources */,
 				E1AB94D5255E329D000C165C /* Queue.swift in Sources */,
 				E1AB94D0255E3102000C165C /* Stack.swift in Sources */,
+				E1AB94E7255E86D4000C165C /* algo.swift in Sources */,
 				E1AB94C8255E170E000C165C /* LinkedList.swift in Sources */,
 				E1AB94CB255E1732000C165C /* LinkedNode.swift in Sources */,
 				E1AB94BE255E16DD000C165C /* main.swift in Sources */,
