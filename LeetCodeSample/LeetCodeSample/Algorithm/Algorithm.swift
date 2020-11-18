@@ -65,10 +65,9 @@ extension Algorithm {
             let node = LinkedNode<T>(carry % 10)
             carry /= 10
             current.next = node
-            node.previous = current
+            node.previous = current 
             current = node
         }
-        
         return head.next
     }
     
