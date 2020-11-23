@@ -7,19 +7,6 @@
 
 import Foundation
 
-example(title: "LinkedList merge two list") {
-    
-    let left = LinkedList<Int>()
-    let right = LinkedList<Int>()
-    left.appends(1,2,4,4,6,7,8)
-    right.appends(1,3,4,4,5,6,71)
-    
-    let list = algo.merge(lhs: left, rhs: right)
-
-    print(list.debugDescription)
-}
-
-
 example(title: "Two Sum") {
     let items = [2, 7, 11, 15]
     
@@ -40,4 +27,26 @@ example(title: "Linked Node Add Two Num") {
     let result = algo.addTwoNum(default: 0, lhs: list1, rhs: list2)
 
     print(" result = \(result.debugDescription) ")
+}
+
+example(title: "Merge Two Sorted Lists") {
+    let list1 = LinkedList<Int>(), list2 = LinkedList<Int>()
+    list1.appends(2, 3, 5)
+    list2.appends(8, 9, 10)
+    let result = algo.mergeSloted(lhs: list1, rhs: list2)
+    print(result.debugDescription)
+}
+
+example(title: "Binary Tree Maximum Path Sum") {
+    let root = BTreeNode<Int>(5)
+    let root2 = BTreeNode<Int>(61), root3 = BTreeNode<Int>(4)
+    root.leftNode = root2
+    root2.rightNode = root3
+    root2.leftNode = BTreeNode<Int>(20)
+    root2.rightNode = BTreeNode<Int>(20)
+    root3.leftNode = BTreeNode<Int>(12)
+    root3.rightNode = BTreeNode<Int>(2)
+    let result = algo.treeMaxSum(root)
+    
+    print(result)
 }

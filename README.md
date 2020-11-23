@@ -9,6 +9,8 @@
    - [Two Sum](#two-sum)
    - [Add Two Num](#add-two-num)
    - [Merge Two Sorted Lists](#merge-two-sorted-lists)
+   - [Binary Tree Maximum Path Sum](#binary-tree-maximum-path-sum)
+   - [Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
 
 ## 目前需要使用的数据结构
 
@@ -85,7 +87,7 @@ func addTwoNum<T>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? wh
 }
 ```
 
-## Merge Two Sorted Lists
+### Merge Two Sorted Lists
 Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
 
 **题目大意：合并两个有序链表**
@@ -99,7 +101,7 @@ Output: 1->1->2->3->4
 **Code**
 
 ``` Swift
-func merge<T: Comparable>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? {
+func mergeSloted<T: Comparable>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? {
     guard let lhs = lhs else {
         return rhs
     }
@@ -119,3 +121,86 @@ func merge<T: Comparable>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNod
 }
 
 ``` 
+
+### Binary Tree Maximum Path Sum
+Given a non-empty binary tree, find the maximum path sum.
+For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
+
+**题目大意: 给定一个非空二叉树，返回该二叉树最大路径值**
+
+``` Markdown 
+
+Example 1:
+
+Input: [1,2,3]
+
+       1
+      / \
+     2   3
+
+Output: 6
+Example 2:
+
+Input: [-10,9,20,null,null,15,7]
+
+   -10
+   / \
+  9  20
+    /  \
+   15   7
+
+Output: 42
+
+```
+
+思路：后序遍历。
+
+**Code**
+需要添加一全局变量
+
+`var carry = Int.min`
+
+``` Swift
+func treeMaxSum<T>(_ node: TreeNode<T>?) -> T where T: FixedWidthInteger & SignedInteger {
+    guard let node = node else {
+        return 0
+    }
+    let right = treeMaxSum(node.rightNode)
+    let left = treeMaxSum(node.leftNode)
+    carry = max(carry, right+left+node.val)
+    return max(right, left) + node.val
+}
+
+
+```
+
+### Longest Substring Without Repeating Characters
+
+Given a string, find the length of the longest substring without repeating characters.
+
+**题目大意: 获取当前字符串中最长不重复的子串**
+
+``` Markdown
+Example 1:
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+
+Example 2:
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
+Example 3:
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+
+Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+```
+
+**Code**
+
+``` Swift
+
+```

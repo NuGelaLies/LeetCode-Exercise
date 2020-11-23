@@ -17,6 +17,8 @@
 		E1AB94E0255E5FEC000C165C /* LinkNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94DF255E5FEC000C165C /* LinkNode+Extension.swift */; };
 		E1AB94E4255E8459000C165C /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94E3255E8459000C165C /* Algorithm.swift */; };
 		E1AB94E7255E86D4000C165C /* algo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94E6255E86D4000C165C /* algo.swift */; };
+		E1E22A692565105B00D08204 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E22A682565105B00D08204 /* TreeNode.swift */; };
+		E1E22A6C256527ED00D08204 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E22A6B256527EC00D08204 /* BinaryTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +45,8 @@
 		E1AB94DF255E5FEC000C165C /* LinkNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkNode+Extension.swift"; sourceTree = "<group>"; };
 		E1AB94E3255E8459000C165C /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		E1AB94E6255E86D4000C165C /* algo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = algo.swift; sourceTree = "<group>"; };
+		E1E22A682565105B00D08204 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
+		E1E22A6B256527EC00D08204 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +136,19 @@
 			isa = PBXGroup;
 			children = (
 				E1AB94E3255E8459000C165C /* Algorithm.swift */,
+				E1E22A672565104300D08204 /* TreeNodes */,
 				E1AB94E6255E86D4000C165C /* algo.swift */,
 			);
 			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		E1E22A672565104300D08204 /* TreeNodes */ = {
+			isa = PBXGroup;
+			children = (
+				E1E22A682565105B00D08204 /* TreeNode.swift */,
+				E1E22A6B256527EC00D08204 /* BinaryTree.swift */,
+			);
+			path = TreeNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +214,9 @@
 				E1AB94D0255E3102000C165C /* Stack.swift in Sources */,
 				E1AB94E7255E86D4000C165C /* algo.swift in Sources */,
 				E1AB94C8255E170E000C165C /* LinkedList.swift in Sources */,
+				E1E22A692565105B00D08204 /* TreeNode.swift in Sources */,
 				E1AB94CB255E1732000C165C /* LinkedNode.swift in Sources */,
+				E1E22A6C256527ED00D08204 /* BinaryTree.swift in Sources */,
 				E1AB94BE255E16DD000C165C /* main.swift in Sources */,
 				E1AB94D9255E33CA000C165C /* Helper.swift in Sources */,
 				E1AB94E0255E5FEC000C165C /* LinkNode+Extension.swift in Sources */,

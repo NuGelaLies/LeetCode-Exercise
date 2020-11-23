@@ -109,7 +109,7 @@ extension Algorithm {
         return rhs
     }
     
-    static func merge<T: Comparable>(lhs: LinkedList<T>, rhs: LinkedList<T>) -> LinkedList<T> {
+    static func mergeSloted<T: Comparable>(lhs: LinkedList<T>, rhs: LinkedList<T>) -> LinkedList<T> {
         guard let lnode = lhs.head else { return rhs }
         guard let rnode = rhs.head else { return lhs }
         if lnode.val < rnode.val {
@@ -119,6 +119,32 @@ extension Algorithm {
         rnode.next = mergeNodes(lhs: lnode, rhs: rnode.next)
         return rhs
     }
+    
+    //MARK: - Binary Tree Maximum Path Sum
+    /**
+     Given a non-empty binary tree, find the maximum path sum.
+     For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
+     */
+    
+    static func treeMaxSum<T>(_ node: BTreeNode<T>?, _ transfrom: ((T) -> Void)? = nil) where T: FixedWidthInteger & SignedInteger  {
+        guard let node = node else { return }
+        let right = treeMaxSum(node.rightNode)
+        let left = treeMaxSum(node.leftNode)
+        transfrom?(right + left + node.val)
+    }
+    
+    static func treeMaxSum<T>(_ node: BTreeNode<T>?) -> T where T: FixedWidthInteger & SignedInteger {
+        guard let node = node else {
+            return 0
+        }
+        var result: T = 0
+        treeMaxSum(node) { (ort) in
+            result += ort
+        }
+        return result
+    }
+   
+   
 }
 
 
