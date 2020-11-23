@@ -66,24 +66,30 @@ Explanation: 342 + 465 = 807
 
 ``` Swift 
 func addTwoNum<T>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? where T : FixedWidthInteger & SignedInteger {
-    let head = LinkedNode<T>(0)
-    var lnode = lhs, rnode = rhs, carry = 0, current = head
-    while lnode != nil || rnode != nil || carry != 0 {
-        if let lnod = lnode {
-            carry += lnod.val
-            lnode = lnod.next
-        }
-        if let rnod = rnode {
-            carry += rnod.val
-            rnode = rnod.next
-        }
-        let node = LinkedNode<T>(carry % 10)
-        carry /= 10
-        current.next = node
-        node.previous = current //双链表头结点
-        current = node
+    let root = LinkedNode<T>(0)
+    var head = root
+    var lhc = lhs
+    var rhc = rhs
+    var carry: T = 0
+                
+    while lhc != nil || rhc != nil {
+        let sum = (lhc?.val ?? 0) + (rhc?.val ?? 0) + carry
+        carry = sum / 10
+        let remainder = sum % 10
+        let newNode = LinkedNode<T>(remainder)
+        head.next = newNode
+        newNode.previous = head
+        head = newNode
+        lhc = lhc?.next
+        rhc = rhc?.next
     }
-    return head.next
+                
+    if carry > 0 {
+        let carryNode = LinkedNode<T>(carry)
+        head.next = carryNode
+        head = carryNode
+    }       
+    return root.next
 }
 ```
 
