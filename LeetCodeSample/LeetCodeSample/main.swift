@@ -38,8 +38,8 @@ example(title: "Merge Two Sorted Lists") {
 }
 
 example(title: "Binary Tree Maximum Path Sum") {
-    let root = BTreeNode<Int>(5)
-    let root2 = BTreeNode<Int>(-101), root3 = BTreeNode<Int>(4)
+    let root = BTreeNode<Int>(-10)
+    let root2 = BTreeNode<Int>(9), root3 = BTreeNode<Int>(4)
     root.leftNode = root2
     root.rightNode = root3
     root2.leftNode = BTreeNode<Int>(20)
@@ -49,4 +49,5 @@ example(title: "Binary Tree Maximum Path Sum") {
     let result = algo.treeMaxSum(root)
     
     print(result)
+    
 }

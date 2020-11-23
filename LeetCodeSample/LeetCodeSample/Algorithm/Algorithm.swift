@@ -124,17 +124,26 @@ extension Algorithm {
     /**
      Given a non-empty binary tree, find the maximum path sum.
      For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
-     */    
-    static func treeMaxSum<T>(_ node: BTreeNode<T>?) -> T where T: FixedWidthInteger & SignedInteger {
-        guard let node = node else {
+     */
+    
+    static func treeMaxSum<T>(_ root: BTreeNode<T>?) -> T where T: FixedWidthInteger & BinaryInteger {
+        var result: T = 0;
+        guard let node = root else {
             return 0
         }
-        let right = max(0, treeMaxSum(node.rightNode))
-        let left = max(0, treeMaxSum(node.leftNode))
-        
-        return right + left + node.val
+        algo.helper(node, &result)
+        return result  
     }
-   
+    
+    @discardableResult
+    static func helper<T>(_ root: BTreeNode<T>?, _ result: inout T) -> T where T: FixedWidthInteger & BinaryInteger {
+        guard let root = root else { return 0 }
+        let left = max(0, helper(root.leftNode, &result))
+        let right = max(0, helper(root.rightNode, &result))
+        result = max(result, root.val + left + right)
+        return root.val + max(left, right)
+    }
+    
    
 }
 

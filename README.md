@@ -126,7 +126,7 @@ func mergeSloted<T: Comparable>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> Lin
 Given a non-empty binary tree, find the maximum path sum.
 For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
 
-**题目大意: 给定一个非空二叉树，返回该二叉树最大路径值**
+**题目大意: 给定一个非空二叉树，至少包含一个节点，不一定需要通过根节点，返回该二叉树最大路径和**
 
 ``` Markdown 
 
@@ -156,21 +156,17 @@ Output: 42
 思路：后序遍历。
 
 **Code**
-需要添加一全局变量
-
-`var carry = Int.min`
 
 ``` Swift
-func treeMaxSum<T>(_ node: TreeNode<T>?) -> T where T: FixedWidthInteger & SignedInteger {
-    guard let node = node else {
-        return 0
-    }
-    let right = treeMaxSum(node.rightNode)
-    let left = treeMaxSum(node.leftNode)
-    carry = max(carry, right+left+node.val)
-    return max(right, left) + node.val
-}
 
+@discardableResult
+func helper<T>(_ root: BTreeNode<T>?, _ result: inout T) -> T where T: FixedWidthInteger & BinaryInteger {
+    guard let root = root else { return 0 }
+    let left = max(0, helper(root.leftNode, &result))
+    let right = max(0, helper(root.rightNode, &result))
+    result = max(result, root.val + left + right)
+    return root.val + max(left, right)
+}
 
 ```
 
