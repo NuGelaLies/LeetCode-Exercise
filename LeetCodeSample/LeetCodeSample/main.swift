@@ -49,3 +49,10 @@ example(title: "Binary Tree Maximum Path Sum") {
     print(result)
     
 }
+example(title: "Longest Substring Without Repeating Characters") {
+    
+    let string = "LongestSSSSS"
+    let result = algo.lengthOfLongestSubstring(string)
+    
+    print("\(string) longest length = \(result)")
+}

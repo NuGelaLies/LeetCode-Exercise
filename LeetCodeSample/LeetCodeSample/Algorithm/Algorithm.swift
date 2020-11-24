@@ -149,6 +149,40 @@ extension Algorithm {
     }
     
    
+    // MARK: Longest Substring Without Repeating Characters
+    /**
+     Given a string s, find the length of the longest substring without repeating characters.
+     */
+    static func lengthOfLongestSubstring(_ s: String) -> Int {
+        var maxLength = 0
+        var lastStringSatrtIndex = 0
+        var currentStringLength = 0
+        var tempDict = [Character:Int]()
+        var currentIndex = s.startIndex
+        let count = s.count
+        for i in 0 ..< count {
+            let subString = s[currentIndex]
+            let oldIndex = tempDict[subString]
+            if oldIndex != nil &&  oldIndex! >= lastStringSatrtIndex{
+                lastStringSatrtIndex = oldIndex! + 1
+                currentStringLength = i - lastStringSatrtIndex
+                
+                
+                let willMaxLength = count - lastStringSatrtIndex
+                
+                if maxLength >= willMaxLength  { return maxLength }
+            }
+            
+            currentStringLength += 1
+
+            maxLength = max(currentStringLength, maxLength)
+
+            tempDict[subString] = i
+            currentIndex = s.index(after: currentIndex)
+        }
+        
+        return maxLength
+    }
 }
 
 
