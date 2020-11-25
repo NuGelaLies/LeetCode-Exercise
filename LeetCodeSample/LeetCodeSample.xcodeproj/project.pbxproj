@@ -15,6 +15,10 @@
 		E1AB94D9255E33CA000C165C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94D8255E33CA000C165C /* Helper.swift */; };
 		E1AB94DD255E3663000C165C /* LinkedList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94DC255E3663000C165C /* LinkedList+Extensions.swift */; };
 		E1AB94E0255E5FEC000C165C /* LinkNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94DF255E5FEC000C165C /* LinkNode+Extension.swift */; };
+		E1AB94E4255E8459000C165C /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94E3255E8459000C165C /* Algorithm.swift */; };
+		E1AB94E7255E86D4000C165C /* algo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AB94E6255E86D4000C165C /* algo.swift */; };
+		E1E22A692565105B00D08204 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E22A682565105B00D08204 /* TreeNode.swift */; };
+		E1E22A6C256527ED00D08204 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E22A6B256527EC00D08204 /* BinaryTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +43,10 @@
 		E1AB94D8255E33CA000C165C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		E1AB94DC255E3663000C165C /* LinkedList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkedList+Extensions.swift"; sourceTree = "<group>"; };
 		E1AB94DF255E5FEC000C165C /* LinkNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkNode+Extension.swift"; sourceTree = "<group>"; };
+		E1AB94E3255E8459000C165C /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
+		E1AB94E6255E86D4000C165C /* algo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = algo.swift; sourceTree = "<group>"; };
+		E1E22A682565105B00D08204 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
+		E1E22A6B256527EC00D08204 /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 		E1AB94BC255E16DD000C165C /* LeetCodeSample */ = {
 			isa = PBXGroup;
 			children = (
+				E1AB94E2255E842B000C165C /* Algorithm */,
 				E1AB94CD255E30D5000C165C /* Common */,
 				E1AB94BD255E16DD000C165C /* main.swift */,
 			);
@@ -121,6 +130,25 @@
 				E1AB94D4255E329D000C165C /* Queue.swift */,
 			);
 			path = Queue;
+			sourceTree = "<group>";
+		};
+		E1AB94E2255E842B000C165C /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				E1AB94E3255E8459000C165C /* Algorithm.swift */,
+				E1E22A672565104300D08204 /* TreeNodes */,
+				E1AB94E6255E86D4000C165C /* algo.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		E1E22A672565104300D08204 /* TreeNodes */ = {
+			isa = PBXGroup;
+			children = (
+				E1E22A682565105B00D08204 /* TreeNode.swift */,
+				E1E22A6B256527EC00D08204 /* BinaryTree.swift */,
+			);
+			path = TreeNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,10 +209,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AB94DD255E3663000C165C /* LinkedList+Extensions.swift in Sources */,
+				E1AB94E4255E8459000C165C /* Algorithm.swift in Sources */,
 				E1AB94D5255E329D000C165C /* Queue.swift in Sources */,
 				E1AB94D0255E3102000C165C /* Stack.swift in Sources */,
+				E1AB94E7255E86D4000C165C /* algo.swift in Sources */,
 				E1AB94C8255E170E000C165C /* LinkedList.swift in Sources */,
+				E1E22A692565105B00D08204 /* TreeNode.swift in Sources */,
 				E1AB94CB255E1732000C165C /* LinkedNode.swift in Sources */,
+				E1E22A6C256527ED00D08204 /* BinaryTree.swift in Sources */,
 				E1AB94BE255E16DD000C165C /* main.swift in Sources */,
 				E1AB94D9255E33CA000C165C /* Helper.swift in Sources */,
 				E1AB94E0255E5FEC000C165C /* LinkNode+Extension.swift in Sources */,

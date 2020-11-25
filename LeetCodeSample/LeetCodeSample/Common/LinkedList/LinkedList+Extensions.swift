@@ -24,8 +24,5 @@ extension LinkedList {
         }
     }
 }
-//Example - Add To LinkedList
-extension LinkedList {
-    
-   
-}
+
+
