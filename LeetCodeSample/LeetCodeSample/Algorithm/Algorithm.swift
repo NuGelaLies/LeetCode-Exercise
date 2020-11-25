@@ -183,6 +183,66 @@ extension Algorithm {
         
         return maxLength
     }
+    //MARK: Median of Two Sorted Arrays
+    
+    /**
+     Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+     Folstart up: The overall run time complexity should be O(log (m+n)).
+     
+     Example 1:
+
+     Input: nums1 = [1,3], nums2 = [2]
+     Output: 2.00000
+     Explanation: merged array = [1,2,3] and median is 2.
+     Example 2:
+
+     Input: nums1 = [1,2], nums2 = [3,4]
+     Output: 2.50000
+     Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+     Example 3:
+
+     Input: nums1 = [0,0], nums2 = [0,0]
+     Output: 0.00000
+     Example 4:
+
+     Input: nums1 = [], nums2 = [1]
+     Output: 1.00000
+     Example 5:
+
+     Input: nums1 = [2], nums2 = []
+     Output: 2.00000
+
+     */
+    static func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
+        if nums1.count > nums2.count {
+            return findMedianSortedArrays(nums2, nums1)
+        }
+        let lhc = nums1.count
+        let rhc = nums2.count
+        var sat = 0
+        var end = lhc
+        while sat <= end {
+            let middle_l = (sat + end) / 2
+            let middle_r = ((lhc + rhc + 1)/2) - middle_l
+            let lhx = middle_l == 0 ? Int.min : nums1[middle_l-1]
+            let rhx = middle_l == lhc ? Int.max : nums1[middle_l]
+            let lhy = middle_r == 0 ? Int.min : nums2[middle_r-1]
+            let rhy = middle_r == rhc ? Int.max  : nums2[middle_r]
+            if lhx <= rhy && lhy <= rhx {
+                if (lhc + rhc) % 2 == 0 {
+                    return Double((max(lhx, lhy) + min(rhx, rhy))) / 2
+                } else {
+                    return Double(max(lhx, lhy))
+                }
+            } else if lhx > rhy {
+                end = middle_l - 1
+            } else {
+                sat = middle_l + 1
+            }
+        }
+        return 0.0
+    }
 }
 
 
