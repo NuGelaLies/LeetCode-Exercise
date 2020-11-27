@@ -7,12 +7,6 @@
 
 import Foundation
 
-example(title: "two sum") {
-    let item1 = [1,2], item2 = [3,4]
-    let value = algo.findMedianSortedArrays(item1, item2)
-    print(value)
-}
-
 //example(title: "Two Sum") {
 //    let items = [2, 7, 11, 15]
 //
@@ -62,3 +56,15 @@ example(title: "two sum") {
 //
 //    print("\(string) longest length = \(result)")
 //}
+
+//example(title: "Median of Two Sorted Arrays") {
+//    let item1 = [1,2], item2 = [3,4]
+//    let value = algo.findMedianSortedArrays(item1, item2)
+//    print(value)
+//}
+
+example(title: "Longest Palindromic Substring") {
+    let s = "babad"
+    
+    print(algo.longestPalindrome(s))
+}

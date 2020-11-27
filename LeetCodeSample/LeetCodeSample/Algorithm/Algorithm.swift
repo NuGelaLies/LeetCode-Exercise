@@ -243,6 +243,55 @@ extension Algorithm {
         }
         return 0.0
     }
+    
+    //MARK: Longest Palindromic Substring
+    
+    /**
+     Given a string s, return the longest palindromic substring in s.
+     
+     Example 1:
+
+     Input: s = "babad"
+     Output: "bab"
+     Note: "aba" is also a valid answer.
+
+     Example 2:
+
+     Input: s = "cbbd"
+     Output: "bb"
+     Example 3:
+     
+     */
+    
+    static func expand(_ string: [Character], left: Int, right: Int) -> (left: Int, right: Int) {
+        var step = 0
+        while left - step >= 0 && right + step < string.count && string[left - step] == string[right + step] {
+            step += 1
+        }
+        return (left - step + 1, right + step - 1)
+    }
+
+    static func longestPalindrome(_ s: String) -> String {
+        let string = Array(s)
+        var left = 0
+        var right = 0
+        for index in string.indices {
+            let odd = expand(string, left: index, right: index)
+            let even = expand(string, left: index, right: index + 1)
+            if odd.right - odd.left > even.right - even.left {
+                if odd.right - odd.left > right - left {
+                    left = odd.left
+                    right = odd.right
+                }
+            } else {
+                if even.right - even.left > right - left {
+                    left = even.left
+                    right = even.right
+                }
+            }
+        }
+        return String(string[left...right])
+    }
 }
 
 
