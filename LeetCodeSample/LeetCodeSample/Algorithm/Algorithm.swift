@@ -262,7 +262,6 @@ extension Algorithm {
      Example 3:
      
      */
-    
     static func expand(_ string: [Character], left: Int, right: Int) -> (left: Int, right: Int) {
         var step = 0
         while left - step >= 0 && right + step < string.count && string[left - step] == string[right + step] {
@@ -291,6 +290,23 @@ extension Algorithm {
             }
         }
         return String(string[left...right])
+    }
+    
+    static func zigZagconvert(_ s: String, _ numRows: Int) -> String {
+        guard numRows >= 2 && s.count > 1 else {
+            return s
+        }
+        let minCount = min(s.count, numRows)
+        var contents = Array<String>(repeating: "", count: minCount)
+        var rowIndex = 0
+        var isReversed = false
+        for index in 0..<s.count {
+            let subIndex = s.index(s.startIndex, offsetBy: index)
+            contents[rowIndex] += String(s[subIndex])
+            rowIndex += isReversed ? -1 : 1
+            if rowIndex == (numRows - 1) || rowIndex == 0 { isReversed.toggle() }
+        }
+        return contents.joined()
     }
 }
 
