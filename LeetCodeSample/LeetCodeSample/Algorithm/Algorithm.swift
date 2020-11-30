@@ -305,6 +305,7 @@ extension Algorithm {
             contents[rowIndex] += String(s[subIndex])
             rowIndex += isReversed ? -1 : 1
             if rowIndex == (numRows - 1) || rowIndex == 0 { isReversed.toggle() }
+            print(contents)
         }
         return contents.joined()
     }
