@@ -12,6 +12,8 @@
    - [Binary Tree Maximum Path Sum](#binary-tree-maximum-path-sum)
    - [Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
    - [Median of Two Sorted Arrays](#median-of-two-sorted-arrays)
+   - [ZigZag Conversion](#zigzag-conversion)
+  
 
 ## 目前需要使用的数据结构
 
@@ -310,6 +312,73 @@ func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
     }
     return 0.0
 }
-     
 
+```
+
+### ZigZag Conversion
+
+The string `PAYPALISHIRING` is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+And then read line by line: `PAHNAPLSIIGYIR`
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+```
+string convert(string s, int numRows);
+```
+
+**Example 1:**
+
+```Markdown
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+
+Explanation:
+P   A   H   N
+A P L S I I G
+Y   I   R
+```
+
+**Example 2:**
+
+```Markdown
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+
+Explanation:
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+```
+
+**Example 3:**
+
+```Markdown
+Input: s = "A", numRows = 1
+Output: "A"
+```
+
+**题目大意: Z字变换，将字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。**
+
+**Code**
+
+```Swift
+func zigZagconvert(_ s: String, _ numRows: Int) -> String {
+    guard numRows >= 2 && s.count > 1 else {
+        return s
+    }
+    let minCount = min(s.count, numRows)
+    var contents = Array<String>(repeating: "", count: minCount)
+    var rowIndex = 0
+    var isReversed = false
+    for index in 0..<s.count {
+        let subIndex = s.index(s.startIndex, offsetBy: index)
+        contents[rowIndex] += String(s[subIndex])
+        rowIndex += isReversed ? -1 : 1
+        if rowIndex == (numRows - 1) || rowIndex == 0 { isReversed.toggle() }
+        print(contents)
+    }
+    return contents.joined()
+}
 ```
