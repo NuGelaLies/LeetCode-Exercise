@@ -36,7 +36,8 @@ import Foundation
 //    let result = algo.mergeSloted(lhs: list1, rhs: list2)
 //    print(result.debugDescription)
 //}
-//
+
+
 //example(title: "Binary Tree Maximum Path Sum") {
 //    let root = BTreeNode<Int>(-10)
 //    let root2 = BTreeNode<Int>(9), root3 = BTreeNode<Int>(20)
@@ -49,6 +50,7 @@ import Foundation
 //    print(result)
 //
 //}
+
 //example(title: "Longest Substring Without Repeating Characters") {
 //
 //    let string = "LongestSSSSS"
@@ -63,8 +65,14 @@ import Foundation
 //    print(value)
 //}
 
-example(title: "Longest Palindromic Substring") {
-    let s = "babad"
+//example(title: "Longest Palindromic Substring") {
+//    let s = "babad"
+//
+//    print(algo.longestPalindrome(s))
+//}
+
+example(title: "ZigZag Conversion") {
+    let s = "PAHNAPLSIIGYIR"
     
-    print(algo.longestPalindrome(s))
+    print(algo.zigZagconvert(s, 3))
 }
