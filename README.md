@@ -13,12 +13,16 @@
    - [Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
    - [Median of Two Sorted Arrays](#median-of-two-sorted-arrays)
    - [ZigZag Conversion](#zigzag-conversion)
+   - [Reverse Integer](#reverse-integer)
+   - [String to Integer (atoi)](#string-to-integer-atoi)
+   - [Palindrome Number](#palindrome-number)
   
 
 ## 目前需要使用的数据结构
 
 [LinkedList](https://github.com/NuGelaLies/leetCode-for-everyday/blob/main/LeetCodeSample/LeetCodeSample/Common/LinkedList/LinkedList.swift)
 [LinkedNode](https://github.com/NuGelaLies/leetCode-for-everyday/blob/main/LeetCodeSample/LeetCodeSample/Common/LinkedList/Nodes/LinkedNode.swift) 
+[TreeNode](https://)
 
 ## 题解
 
@@ -285,32 +289,24 @@ Output: 2.00000
 
 ```Swift
 func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
-    if nums1.count > nums2.count {
-        return findMedianSortedArrays(nums2, nums1)
-    }
-    let lhc = nums1.count, rhc = nums2.count
-    var start = 0, end = lhc
-        
-    while start <= end {
-        let middle_l = (start + end) / 2
-        let middle_r = ((lhc + rhc + 1)/2) - middle_l
-        let lhx = middle_l == 0 ? Int.min : nums1[middle_l-1]
-        let rhx = middle_l == lhc ? Int.max : nums1[middle_l]
-        let lhy = middle_r == 0 ? Int.min : nums2[middle_r-1]
-        let rhy = middle_r == rhc ? Int.max  : nums2[middle_r]
-        if lhx <= rhy && lhy <= rhx {
-            if (lhc + rhc) % 2 == 0 {
-                return Double((max(lhx, lhy) + min(rhx, rhy))) / 2
-            } else {
-                return Double(max(lhx, lhy))
-            }
-        } else if lhx > rhy {
-            end = middle_l - 1
+    let aCount = nums1.count, bCount = nums2.count
+    var left = 0 , right = 0, aIndex = 0, bIndex = 0
+    let length = (aCount + bCount) / 2
+    for _ in 0...length {
+        left = right
+        if (aIndex < aCount && (bIndex >= bCount || nums1[aIndex] < nums2[bIndex])) {
+            right = nums1[aIndex]
+            aIndex += 1
         } else {
-            start = middle_l + 1
+            right = nums2[bIndex]
+            bIndex += 1
         }
     }
-    return 0.0
+    if (aCount + bCount) % 2 == 0 {
+        return Double(left + right) / 2
+    } else {
+        return Double(right)
+    }
 }
 
 ```
@@ -381,4 +377,262 @@ func zigZagconvert(_ s: String, _ numRows: Int) -> String {
     }
     return contents.joined()
 }
+```
+
+### Reverse Integer
+
+Given a 32-bit signed integer, reverse digits of an integer.
+
+**Note:**
+
+Assume we are dealing with an environment that could only store integers within the 32-bit signed integer range: `[−2^31,  2^31 − 1]`. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+
+**Example 1:**
+
+```Markdown
+Input: x = 123
+Output: 321
+```
+
+**Example 2:**
+
+```Markdown
+Input: x = -123
+Output: -321
+```
+
+**Example 3:**
+
+```Markdown
+Input: x = 120
+Output: 21
+```
+
+**Example 4:**
+
+```Markdown
+Input: x = 0
+Output: 0
+```
+
+**Constraints:**
+`-2^31 <= x <= 2^31 - 1`
+
+**大意：给出一个32位整数，要求翻转输出，当计算溢出后返回0**
+
+**Code**
+
+```Swift
+func reverse(_ x: Int) -> Int {
+    guard integer != 0 else {return integer}
+    var num = integer, result = 0
+    while num != 0 {
+        let carry = num % 10
+        result = result * 10 + carry
+        guard result <= Int(Int32.max) && result >= Int(Int32.min) else {
+            return 0
+        }
+        num /= 10
+    }
+    return result
+}
+```
+
+### String to Integer (atoi)
+
+Implement atoi which converts a string to an integer.
+
+The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+
+The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+ 
+If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+
+If no valid conversion could be performed, a zero value is returned.
+
+**大意: 字符串转换整数，字符串开头只允许存在一个符号 + 或 - 在数字前, 空格除外 ，所有不符合条件的返回值都为0**
+
+**Example 1:**
+
+```Markdown
+Input: str = "42"
+Output: 42
+```
+
+
+**Example 2:**
+
+```Markdown
+Input: str = "   -42"
+Output: -42
+Explanation: The first non-whitespace character is '-', which is the minus sign. Then take as many numerical digits as possible, which gets 42.
+```
+
+**Example 3:**
+
+```Markdown
+Input: str = "4193 with words"
+Output: 4193
+Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
+```
+
+**Example 4:**
+
+```Markdown
+Input: str = "words and 987"
+Output: 0
+Explanation: The first non-whitespace character is 'w', which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.
+```
+
+**Example 5:**
+
+```Markdown
+Input: str = "-91283472332"
+Output: -2147483648
+Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer. Thefore INT_MIN (−231) is returned.
+```
+
+**Code**
+
+```Swift
+
+func myAtoi(_ s: String) -> Int {
+    var result: Int32 = 0
+    var sign = 1, started = false
+    for char in s {
+        if char == " " {
+           if started { break }
+        } else if char == "-" {
+            sign = -1
+            if started { break }
+            started = true
+        } else if char == "+" {
+            if started { break }
+            started = true
+        } else if char >= "0" && char <= "9" {
+            let digit = Int32(char.utf8.first! - "0".first!.utf8.first!)
+            if sign > 0 {
+                if result > Int32.max / 10 || (result == Int32.max / 10 && digit > Int32.max % 10) {
+                    return Int(Int32.max)
+                } else {
+                    result = result * 10 + digit
+                }
+            } else {
+                if result < Int32.min / 10 || (result == Int32.min / 10 && -digit < Int32.min % 10) {
+                    return Int(Int32.min)
+                } else {
+                    result = result * 10 - digit
+                }
+            }
+            started = true
+        } else {
+            break
+        }
+    }
+    return Int(result)
+}
+
+```
+
+### Palindrome Number
+
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+**Follow up:** Could you solve it without converting the integer to a string?
+
+**判断一个数是否为回文数**
+
+**Example 1:**
+
+```Markdown
+Input: x = 121
+Output: true
+```
+
+**Example 2:**
+
+```Markdown
+Input: x = -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+```
+
+**Example 3:**
+
+```Markdown
+Input: x = 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+```
+
+**Example 4:**
+
+```Markdown
+Input: x = -101
+Output: false
+```
+
+**Code**
+
+```Swift
+func isPalindrome(_ x: Int) -> Bool {
+    guard x >= 0 else { return false }
+    var value = x, temp = 0
+    while value != 0 {
+        let carry = value % 10
+        temp = temp * 10 + carry
+        value = value / 10
+    }
+    return temp == x
+}
+```
+
+### Longest Palindromic Substring
+
+Given a string s, return the longest palindromic substring in s.
+
+**输入一个字符串，返回一个最长回文串**
+
+**Example 1:**
+
+```Markdown
+Input: s = "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+```
+
+**Code**
+
+```Swift
+
+func expand(_ string: [Character], left: Int, right: Int) -> (left: Int, right: Int) {
+    var step = 0
+    while left - step >= 0 && right + step < string.count && string[left - step] == string[right + step] {
+       step += 1
+    }
+    return (left - step + 1, right + step - 1)
+}
+
+func longestPalindrome(_ s: String) -> String {
+    let string = Array(s)
+    var left = 0
+    var right = 0
+    for index in string.indices {
+        let odd = expand(string, left: index, right: index)
+        let even = expand(string, left: index, right: index + 1)
+        if odd.right - odd.left > even.right - even.left {
+            if odd.right - odd.left > right - left {
+                left = odd.left
+                right = odd.right
+           }
+        } else {
+           if even.right - even.left > right - left {
+                left = even.left
+                right = even.right
+            }
+        }
+    }
+    return String(string[left...right])
+}
+
 ```

@@ -59,11 +59,11 @@ import Foundation
 //    print("\(string) longest length = \(result)")
 //}
 
-//example(title: "Median of Two Sorted Arrays") {
-//    let item1 = [1,2], item2 = [3,4]
-//    let value = algo.findMedianSortedArrays(item1, item2)
-//    print(value)
-//}
+example(title: "Median of Two Sorted Arrays") {
+    let item1 = [1,2,3], item2 = [3,4]
+    let value = algo.findMedianSortedArrays(item1, item2)
+    print(value)
+}
 
 //example(title: "Longest Palindromic Substring") {
 //    let s = "babad"
@@ -71,8 +71,31 @@ import Foundation
 //    print(algo.longestPalindrome(s))
 //}
 
-example(title: "ZigZag Conversion") {
-    let s = "PAHNAPLSIIGYIR"
+//example(title: "ZigZag Conversion") {
+//    let s = "PAHNAPLSIIGYIR"
+//
+//    print(algo.zigZagconvert(s, 3))
+//}
+
+//example(title: "Reverse Integer") {
+//    let num = 12345678911
+//    let result = algo.reverse(num)
+//    print(Int32.max)
+//    print(Int32.min)
+//    print(result)
+//}
+
+//example(title: "myAtoi") {
+//    let word = "-002147483649"
+//
+//    let result = algo.myAtoi(word)
+//    print(result)
+//}
+
+example(title: "") {
+    let value = 1234321
     
-    print(algo.zigZagconvert(s, 3))
+    let result = algo.isPalindrome(value)
+    
+    print(result)
 }

@@ -215,33 +215,24 @@ extension Algorithm {
 
      */
     static func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
-        if nums1.count > nums2.count {
-            return findMedianSortedArrays(nums2, nums1)
-        }
-        let lhc = nums1.count
-        let rhc = nums2.count
-        var sat = 0
-        var end = lhc
-        while sat <= end {
-            let middle_l = (sat + end) / 2
-            let middle_r = ((lhc + rhc + 1)/2) - middle_l
-            let lhx = middle_l == 0 ? Int.min : nums1[middle_l-1]
-            let rhx = middle_l == lhc ? Int.max : nums1[middle_l]
-            let lhy = middle_r == 0 ? Int.min : nums2[middle_r-1]
-            let rhy = middle_r == rhc ? Int.max  : nums2[middle_r]
-            if lhx <= rhy && lhy <= rhx {
-                if (lhc + rhc) % 2 == 0 {
-                    return Double((max(lhx, lhy) + min(rhx, rhy))) / 2
-                } else {
-                    return Double(max(lhx, lhy))
-                }
-            } else if lhx > rhy {
-                end = middle_l - 1
+        let aCount = nums1.count, bCount = nums2.count
+        var left = 0 , right = 0, aIndex = 0, bIndex = 0
+        let length = (aCount + bCount) / 2
+        for _ in 0...length {
+            left = right
+            if (aIndex < aCount && (bIndex >= bCount || nums1[aIndex] < nums2[bIndex])) {
+                right = nums1[aIndex]
+                aIndex += 1
             } else {
-                sat = middle_l + 1
+                right = nums2[bIndex]
+                bIndex += 1
             }
         }
-        return 0.0
+        if (aCount + bCount) % 2 == 0 {
+            return Double(left + right) / 2
+        } else {
+            return Double(right)
+        }
     }
     
     //MARK: Longest Palindromic Substring
@@ -292,6 +283,7 @@ extension Algorithm {
         return String(string[left...right])
     }
     
+    //MARK: - ZigZag Convert
     static func zigZagconvert(_ s: String, _ numRows: Int) -> String {
         guard numRows >= 2 && s.count > 1 else {
             return s
@@ -300,14 +292,123 @@ extension Algorithm {
         var contents = Array<String>(repeating: "", count: minCount)
         var rowIndex = 0
         var isReversed = false
-        for index in 0..<s.count {
-            let subIndex = s.index(s.startIndex, offsetBy: index)
-            contents[rowIndex] += String(s[subIndex])
+        for element in s {
+            contents[rowIndex] += String(element)
             rowIndex += isReversed ? -1 : 1
             if rowIndex == (numRows - 1) || rowIndex == 0 { isReversed.toggle() }
-            print(contents)
         }
         return contents.joined()
+    }
+    
+    //MARK: - Reverse Integer
+    
+    /**
+     Given a 32-bit signed integer, reverse digits of an integer.
+     */
+    
+    static func reverse(_ integer: Int) -> Int {
+        guard integer != 0 else {return integer}
+        var num = integer, result = 0
+        while num != 0 {
+            let carry = num % 10
+            result = result * 10 + carry
+            guard result <= Int(Int32.max) && result >= Int(Int32.min) else {
+                return 0
+            }
+            num /= 10
+        }
+        return result
+    }
+    
+    //MARK: - String to Integer (atoi)
+    
+    /**
+     Implement atoi which converts a string to an integer.
+
+     The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+
+     The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+
+     If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+
+     If no valid conversion could be performed, a zero value is returned.
+     */
+
+    static func myAtoi(_ s: String) -> Int {
+        var result: Int32 = 0
+        var sign = 1, started = false
+        for char in s {
+            if char == " " {
+                if started { break }
+            } else if char == "-" {
+                sign = -1
+                if started { break }
+                started = true
+            } else if char == "+" {
+                if started { break }
+                started = true
+            } else if char >= "0" && char <= "9" {
+                let digit = Int32(char.utf8.first! - "0".first!.utf8.first!)
+                if sign > 0 {
+                    if result > Int32.max / 10 || (result == Int32.max / 10 && digit > Int32.max % 10) {
+                        return Int(Int32.max)
+                    } else {
+                        result = result * 10 + digit
+                    }
+                } else {
+                    if result < Int32.min / 10 || (result == Int32.min / 10 && -digit < Int32.min % 10) {
+                        return Int(Int32.min)
+                    } else {
+                        result = result * 10 - digit
+                    }
+                }
+                started = true
+            } else {
+                break
+            }
+        }
+        return Int(result)
+    }
+    //MARK: -  Palindrome Number
+    
+    /**
+     Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+     - Follow up: Could you solve it without converting the integer to a string?
+     
+     Example 1:
+
+     Input: x = 121
+     Output: true
+     
+     Example 2:
+
+     Input: x = -121
+     Output: false
+     Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+     
+     Example 3:
+
+     Input: x = 10
+     Output: false
+     Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+     
+     Example 4:
+
+     Input: x = -101
+     Output: false
+     
+     */
+    
+    static func isPalindrome(_ x: Int) -> Bool {
+        guard x >= 0 else { return false }
+        var value = x, temp = 0
+        while value != 0 {
+            let carry = value % 10
+            temp = temp * 10 + carry
+            value = value / 10
+        }
+        return temp == x
     }
 }
 
