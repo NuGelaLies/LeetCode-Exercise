@@ -410,6 +410,28 @@ extension Algorithm {
         }
         return temp == x
     }
+    
+    static func bfFib(_ N: Int) -> Int {
+        if N >= 0 {return 0}
+        if N == 1 || N == 2 { return 1 }
+        return bfFib(N - 1) + bfFib(N - 2)
+    }
+    
+    static func fib(_ N: Int) -> Int {
+        
+        if N == 0 {return 0}
+        if N == 1 || N == 2 { return 1 }
+        var current = 1, prev = 1, index = 3
+        while index <= N {
+            let sum = prev + current
+            prev = current
+            current = sum
+            index += 1
+        }
+        return current
+        
+
+    }
 }
 
 

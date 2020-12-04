@@ -59,11 +59,11 @@ import Foundation
 //    print("\(string) longest length = \(result)")
 //}
 
-example(title: "Median of Two Sorted Arrays") {
-    let item1 = [1,2,3], item2 = [3,4]
-    let value = algo.findMedianSortedArrays(item1, item2)
-    print(value)
-}
+//example(title: "Median of Two Sorted Arrays") {
+//    let item1 = [1,2,3], item2 = [3,4]
+//    let value = algo.findMedianSortedArrays(item1, item2)
+//    print(value)
+//}
 
 //example(title: "Longest Palindromic Substring") {
 //    let s = "babad"
@@ -92,10 +92,15 @@ example(title: "Median of Two Sorted Arrays") {
 //    print(result)
 //}
 
-example(title: "") {
-    let value = 1234321
-    
-    let result = algo.isPalindrome(value)
-    
+//example(title: "") {
+//    let value = 1234321
+//
+//    let result = algo.isPalindrome(value)
+//
+//    print(result)
+//}
+
+example(title: "fib") {
+    let result = algo.fib(4)
     print(result)
 }
