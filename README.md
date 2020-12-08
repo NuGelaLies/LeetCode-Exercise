@@ -16,7 +16,7 @@
    - [Reverse Integer](#reverse-integer)
    - [String to Integer (atoi)](#string-to-integer-atoi)
    - [Palindrome Number](#palindrome-number)
-  
+   - [Coin Change](#coin-change)
 
 ## 目前需要使用的数据结构
 
@@ -635,4 +635,94 @@ func longestPalindrome(_ s: String) -> String {
     return String(string[left...right])
 }
 
+```
+
+### Coin Change
+
+You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.
+
+You may assume that you have an infinite number of each kind of coin.
+
+**Example 1:**
+
+```Markdown
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+```
+
+**Example 2:**
+
+```Markdown
+Input: coins = [2], amount = 3
+Output: -1
+```
+
+**Example 3:**
+
+```Markdown
+Input: coins = [1], amount = 0
+Output: 0
+```
+
+**Example 4:**
+
+```Markdown
+Input: coins = [1], amount = 1
+Output: 1
+```
+
+**Example 5:**
+
+```Markdown
+Input: coins = [1], amount = 2
+Output: 2
+```
+
+**Constraints:**
+
+`1 <= coins.length <= 12`
+`1 <= coins[i] <= 231 - 1`
+`0 <= amount <= 104`
+
+先处理处理状态方程，写出递归树，剪枝，
+
+$$ 
+f(n) =
+\begin{cases}
+0,  n = 0\\
+-1, n < 0\\
+min(dp(n), 1 + dp(n-coin)), n > 0
+\end{cases}
+$$
+
+1. **带备忘录的递归解法**
+
+```Swift
+func coinChange(_ coins: [Int], _ amount: Int) -> Int {
+    var dict: [Int: Int] = [:], res = Int.max
+    dict[0] = 0
+    func helper(_ amount: Int) -> Int {
+        if amount == 0 {return 0}
+        if amount < 0 {return -1}
+        if let value = dict[amount] {return value}
+        for coin in coins {
+            let subitem = helper(amoount - coin) 
+            if subitem == -1 {continue}
+            res = min(res, 1 + subitem)
+        }
+        res = res != Int.max ? res : -1
+        dict[amount] = res
+        return res
+    }
+    return helper(amount)
+}
+```
+
+2. **迭代解法(贪心算法)**
+
+```Swift
+func coinChange(_ coins: [Int], _ amount: Int) -> Int { 
+    let sort = coins.sorted(by: <)
+}
 ```

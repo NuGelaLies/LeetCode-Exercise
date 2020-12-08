@@ -100,7 +100,14 @@ import Foundation
 //    print(result)
 //}
 
-example(title: "fib") {
-    let result = algo.fib(4)
+//example(title: "fib") {
+//    let result = algo.fib(4)
+//    print(result)
+//}
+
+example(title: "coin change") {
+    
+    let coins = [1,2,5]
+    let result = algo.greedCoin(coins, 11)
     print(result)
 }

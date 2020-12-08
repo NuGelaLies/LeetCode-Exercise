@@ -429,8 +429,59 @@ extension Algorithm {
             index += 1
         }
         return current
-        
+    }
 
+    //MARK: - 找零钱
+    
+    static func coinChange(_ coins: [Int], _ amount: Int) -> Int {
+        //return normalCoin(coins, amount)
+        return greedCoin(coins, amount)
+    }
+    //贪心算法 + dfk
+     /**
+    时间复杂度: O(nlogn)
+    */
+    static func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
+        if coins.isEmpty { return -1 }
+		let sort = coins.sorted(by: >)
+        var res = Int.max
+        func helper(index: Int, amount: Int, coinCount: Int) {
+            let coin = sort[index] 
+            if amount % coin == 0 {
+                res = min(res, coinCount+amount/coin)
+            } else if index < coins.count - 1 {
+                var needCount = amount/coin
+                while needCount >= 0, needCount+coinCount < res {
+                    helper(index: index+1, amount: amount-coin*needCount, coinCount: coinCount+needCount)
+                    needCount -= 1
+                }
+            }
+        }
+        helper(index: 0, amount: amount, coinCount: 0)
+        return res == Int.max ? -1 : res
+    }
+
+    //递归算法
+    /**
+    时间复杂度: O(k*n^k)
+    */
+    static func normalCoin(_ coins: [Int], _ amount: Int) -> Int {
+        var dict: [Int: Int] = [:], res = Int.max
+        dict[0] = 0
+        func helper(_ amount: Int) -> Int {
+            if amount == 0 {return 0}
+            if amount < 0 {return -1}
+            if let value = dict[amount] {return value}
+            for coin in coins {
+                let subitem = helper(amount - coin)
+                if subitem == -1 {continue}
+                res = min(res, 1+subitem)
+            }
+            res = res != Int.max ? res : -1
+            dict[amount] = res 
+            return res
+        }
+        return helper(amount)
     }
 }
 
