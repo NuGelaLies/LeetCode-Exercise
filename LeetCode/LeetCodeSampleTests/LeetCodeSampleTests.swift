@@ -45,15 +45,14 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.greedCoin([5], 6), -1)
     }
     
-    func testFib() throws {
-        // 1 1 2 3 5 8 13
-        
-        XCTAssertEqual(algo.fib(1), 1)
-        XCTAssertEqual(algo.fib(3), 2)
-        XCTAssertEqual(algo.fib(5), 5)
-        XCTAssertEqual(algo.fib(6), 8)
+    func testNormalCoin() throws {
+        XCTAssertEqual(algo.normalCoin([1,2,5], 11), 3)
+        XCTAssertEqual(algo.normalCoin([1,2,3], 6), 2)
+        XCTAssertEqual(algo.normalCoin([1,2,5], 6), 2)
+        XCTAssertEqual(algo.normalCoin([], 6), -1)
+        XCTAssertEqual(algo.greedCoin([5], 6), -1)
     }
-
+    
     func testIsPalindrome() throws {
         XCTAssertEqual(algo.isPalindrome(6), true)
         XCTAssertEqual(algo.isPalindrome(123), false)
@@ -110,9 +109,31 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.myAtoi("4193 with words"), 4193)
         XCTAssertEqual(algo.myAtoi("words and 987"), 0)
         XCTAssertEqual(algo.myAtoi("-91283472332"), -2147483648)
-        XCTAssertNotEqual(algo.myAtoi("91283472332"), -2147483647)
+        XCTAssertEqual(algo.myAtoi("91283472332"), 2147483647)
     }
     
+    func testBFfib() throws {
+        XCTAssertEqual(algo.bfFib(-6), 0)
+        XCTAssertEqual(algo.bfFib(0), 0)
+        XCTAssertEqual(algo.bfFib(1), 1)
+        XCTAssertEqual(algo.bfFib(2), 1)
+        XCTAssertEqual(algo.bfFib(3), 2)
+        XCTAssertEqual(algo.bfFib(5), 5)
+        XCTAssertEqual(algo.bfFib(6), 8)
+        XCTAssertEqual(algo.bfFib(7), 13)
+    }
+    
+    func testFib() throws {
+        // 1 1 2 3 5 8 13
+        XCTAssertEqual(algo.fib(0), 0)
+        XCTAssertEqual(algo.fib(1), 1)
+        XCTAssertEqual(algo.fib(2), 1)
+        XCTAssertEqual(algo.fib(3), 2)
+        XCTAssertEqual(algo.fib(5), 5)
+        XCTAssertEqual(algo.fib(6), 8)
+        XCTAssertEqual(algo.fib(7), 13)
+        XCTAssertEqual(algo.fib(-6), 0)
+    }
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
