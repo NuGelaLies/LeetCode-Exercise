@@ -35,6 +35,7 @@ class LeetCodeSampleTests: XCTestCase {
         nums1 = [2, 3, 6]
         nums2 = [4, 5]
         XCTAssertEqual(algo.findMedianSortedArrays(nums1, nums2), 4)
+        
     }
     
     func testgreedCoin() throws {
@@ -43,6 +44,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.greedCoin([1,2,5], 6), 2)
         XCTAssertEqual(algo.greedCoin([], 6), -1)
         XCTAssertEqual(algo.greedCoin([5], 6), -1)
+        
     }
     
     func testNormalCoin() throws {
@@ -51,6 +53,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.normalCoin([1,2,5], 6), 2)
         XCTAssertEqual(algo.normalCoin([], 6), -1)
         XCTAssertEqual(algo.greedCoin([5], 6), -1)
+        
     }
     
     func testIsPalindrome() throws {
@@ -59,6 +62,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.isPalindrome(121), true)
         XCTAssertEqual(algo.isPalindrome(-121), false)
         XCTAssertEqual(algo.isPalindrome(12345), false)
+        
     }
     
     
@@ -67,12 +71,14 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.twoSum(6, elements: [3,2,4]), [1, 2])
         XCTAssertEqual(algo.twoSum(6, elements: [3,3]), [0, 1])
         XCTAssertEqual(algo.twoSum(4, elements: []), [])
+        
     }
     
     func testZigZagConversion() throws {
         XCTAssertEqual(algo.zigZagconvert("PAYPALISHIRING", 3), "PAHNAPLSIIGYIR")
         XCTAssertEqual(algo.zigZagconvert("PAYPALISHIRING", 4), "PINALSIGYAHRPI")
         XCTAssertEqual(algo.zigZagconvert("A", 1), "A")
+        
     }
 
     func testLengthOfLongestSubstring() throws {
@@ -80,6 +86,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.lengthOfLongestSubstring("bbbbb"), 1)
         XCTAssertEqual(algo.lengthOfLongestSubstring("pwwkew"), 3)
         XCTAssertEqual(algo.lengthOfLongestSubstring(""), 0)
+        
     }
     
     func testLongest() throws {
@@ -87,7 +94,6 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.longestPalindrome("a"), "a")
         XCTAssertEqual(algo.longestPalindrome("cbbd"), "bb")
         XCTAssertEqual(algo.longestPalindrome("ac"), "a")
-        
     }
     func testReverseIntger() throws {
         XCTAssertEqual(algo.reverse(123), 321)
@@ -100,6 +106,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.reverse(21474836400), 463847412)
         XCTAssertEqual(algo.reverse(7463847412), 2147483647)
         XCTAssertEqual(algo.reverse(-8463847412), -2147483648)
+        
     }
     
     func testStringtoInteger() throws {
@@ -110,6 +117,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.myAtoi("words and 987"), 0)
         XCTAssertEqual(algo.myAtoi("-91283472332"), -2147483648)
         XCTAssertEqual(algo.myAtoi("91283472332"), 2147483647)
+        
     }
     
     func testBFfib() throws {
@@ -121,6 +129,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.bfFib(5), 5)
         XCTAssertEqual(algo.bfFib(6), 8)
         XCTAssertEqual(algo.bfFib(7), 13)
+        
     }
     
     func testFib() throws {
@@ -133,6 +142,7 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.fib(6), 8)
         XCTAssertEqual(algo.fib(7), 13)
         XCTAssertEqual(algo.fib(-6), 0)
+        
     }
     
     func testPerformanceExample() throws {
