@@ -1,6 +1,6 @@
 language: swift  #1
 osx_image: xcode12.2 #2
-xcode_project: ~/LeetCode-for-everyday/LeetCode/LeetCodeSample.xcodeproj 
+xcode_project: LeetCode/LeetCodeSample.xcodeproj 
 xcode_scheme: LeetCodeSampleTests #4
 xcode_sdk: platform=iOS Simulator,OS=14.1,name=iPhone 12 #5
 
