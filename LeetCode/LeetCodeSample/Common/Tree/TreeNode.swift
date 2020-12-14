@@ -24,6 +24,7 @@ class MutableTreeNode<T: Comparable> {
     var child: [MutableTreeNode]?
     init(_ val: T) {
         self.val = val
+        self.child = nil
     }
     
 }

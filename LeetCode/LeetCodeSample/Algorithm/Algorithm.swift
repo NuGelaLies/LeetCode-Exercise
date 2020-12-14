@@ -134,21 +134,21 @@ extension Algorithm {
      */
     
     static func treeMaxSum<T>(_ root: BTreeNode<T>?) -> T where T: FixedWidthInteger & BinaryInteger {
+        
+        @discardableResult
+        func helper<T>(_ root: BTreeNode<T>?, _ result: inout T) -> T where T: FixedWidthInteger & BinaryInteger {
+            guard let root = root else { return 0 }
+            let left = max(0, helper(root.leftNode, &result)), right = max(0, helper(root.rightNode, &result))
+            result = max(result, root.val + left + right)
+            return root.val + max(left, right)
+        }
+        
         var result: T = 0;
         guard let node = root else { return 0 }
-        algo.helper(node, &result)
+        helper(node, &result)
         return result  
     }
     
-    @discardableResult
-    static func helper<T>(_ root: BTreeNode<T>?, _ result: inout T) -> T where T: FixedWidthInteger & BinaryInteger {
-        guard let root = root else { return 0 }
-        let left = max(0, helper(root.leftNode, &result)), right = max(0, helper(root.rightNode, &result))
-        result = max(result, root.val + left + right)
-        return root.val + max(left, right)
-    }
-    
-   
     // MARK: Longest Substring Without Repeating Characters
     /**
      Given a string s, find the length of the longest substring without repeating characters.
@@ -166,10 +166,7 @@ extension Algorithm {
             if oldIndex != nil &&  oldIndex! >= lastStringSatrtIndex{
                 lastStringSatrtIndex = oldIndex! + 1
                 currentStringLength = i - lastStringSatrtIndex
-                
-                
                 let willMaxLength = count - lastStringSatrtIndex
-                
                 if maxLength >= willMaxLength  { return maxLength }
             }
             
@@ -253,15 +250,16 @@ extension Algorithm {
      Example 3:
      
      */
-    static func expand(_ string: [Character], left: Int, right: Int) -> (left: Int, right: Int) {
-        var step = 0
-        while left - step >= 0 && right + step < string.count && string[left - step] == string[right + step] {
-            step += 1
-        }
-        return (left - step + 1, right + step - 1)
-    }
-
     static func longestPalindrome(_ s: String) -> String {
+        
+        func expand(_ string: [Character], left: Int, right: Int) -> (left: Int, right: Int) {
+            var step = 0
+            while left - step >= 0 && right + step < string.count && string[left - step] == string[right + step] {
+                step += 1
+            }
+            return (left - step + 1, right + step - 1)
+        }
+        
         let string = Array(s)
         var left = 0
         var right = 0
@@ -409,6 +407,79 @@ extension Algorithm {
             value = value / 10
         }
         return temp == x
+    }
+    
+    
+    static func bfFib(_ N: Int) -> Int {
+        if N >= 0 {return 0}
+        if N == 1 || N == 2 { return 1 }
+        return bfFib(N - 1) + bfFib(N - 2)
+    }
+    
+    static func fib(_ N: Int) -> Int {
+        
+        if N == 0 {return 0}
+        if N == 1 || N == 2 { return 1 }
+        var current = 1, prev = 1, index = 3
+        while index <= N {
+            let sum = prev + current
+            prev = current
+            current = sum
+            index += 1
+        }
+        return current
+    }
+
+    //MARK: - 找零钱
+    
+    //贪心算法 + dfk
+     /**
+    时间复杂度: O(nlogn)
+    */
+    static func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
+        if coins.isEmpty { return -1 }
+		let sort = coins.sorted(by: >)
+        var res = Int.max
+        
+        func helper(index: Int, amount: Int, coinCount: Int) {
+            let coin = sort[index] 
+            if amount % coin == 0 {
+                res = min(res, coinCount+amount/coin)
+            } else if index < coins.count - 1 {
+                var needCount = amount/coin
+                while needCount >= 0, needCount+coinCount < res {
+                    helper(index: index+1, amount: amount-coin*needCount, coinCount: coinCount+needCount)
+                    needCount -= 1
+                }
+            }
+        }
+        helper(index: 0, amount: amount, coinCount: 0)
+        return res == Int.max ? -1 : res
+    }
+
+    //递归算法
+    /**
+    时间复杂度: O(k*n^k)
+    */
+    static func normalCoin(_ coins: [Int], _ amount: Int) -> Int {
+        var dict: [Int: Int] = [:], res = Int.max
+        dict[0] = 0
+        
+        func helper(_ amount: Int) -> Int {
+            if amount == 0 {return 0}
+            if amount < 0 {return -1}
+            if let value = dict[amount] {return value}
+            for coin in coins {
+                let subitem = helper(amount - coin)
+                if subitem == -1 {continue}
+                res = min(res, 1+subitem)
+            }
+            res = res != Int.max ? res : -1
+            dict[amount] = res 
+            return res
+        }
+        
+        return helper(amount)
     }
 }
 
