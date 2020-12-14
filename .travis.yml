@@ -5,4 +5,5 @@ xcode_scheme: LeetCodeSampleTests
 xcode_destination: platform=iOS Simulator,OS=14.2,name=iPhone 12
 script:
  - set -o pipefail 
- - xcodebuild -project LeetCode/LeetCodeSample.xcodeproj -scheme LeetCodeSampleTests -destination platform\=iOS\ Simulator,OS\=14.2,name\=iPhone\ 12 build test | xcpretty
+- xcodebuild -project LeetCode/LeetCodeSample.xcodeproj -scheme LeetCodeSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild -project LeetCode/LeetCodeSample.xcodeproj -scheme LeetCodeSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c
