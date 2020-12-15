@@ -2,7 +2,7 @@
 
 ---
 [![Build Status](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday.svg?branch=master)](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday)
-
+[![codecov](https://codecov.io/gh/NuGelaLies/LeetCode-for-everyday/branch/master/graph/badge.svg?token=P26KL416ZX)](https://codecov.io/gh/NuGelaLies/LeetCode-for-everyday)
 
 **个人 LeetCode 练习合集。**
 
@@ -19,7 +19,8 @@
    - [String to Integer (atoi)](#string-to-integer-atoi)
    - [Palindrome Number](#palindrome-number)
    - [Coin Change](#coin-change)
-   - [Fibonacci Number]()
+   - [Fibonacci Number](#)
+   - [Binary Search](#binary-search)
 
 ## 目前需要使用的数据结构
 
@@ -802,3 +803,46 @@ func fib(_ N: Int) -> Int {
     return current
 }
 ```
+
+### Binary Search
+
+Given a sorted (in ascending order) integer array nums of n elements and a `target` value, write a function to search `target` in `nums`. If `target` exists, then return its index, otherwise return `-1`.
+
+二分查找
+
+**Example 1:**
+
+```Markdown
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
+```
+
+**Example 2:**
+
+```Markdown
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
+```
+
+**Code**
+
+```Swift
+func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
+    var left = 0, right = nums.count - 1
+    while left <= right {
+        let mid = (right + left) / 2
+        if nums[mid] == target {
+            return mid
+        }
+        if nums[mid] < target {
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+    return -1
+}
+```
+

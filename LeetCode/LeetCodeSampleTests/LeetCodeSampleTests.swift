@@ -175,6 +175,12 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(items[4], 4)
     }
     
+    func testBinarySearch() throws {
+        let items = [-1,0,3,5,9,12]
+        
+        XCTAssertEqual(algo.binarySearch(items, 9), 4)
+        XCTAssertEqual(algo.binarySearch(items, 2), -1)
+    }
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
