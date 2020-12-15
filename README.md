@@ -1,6 +1,8 @@
 # leetCode-for-everyday
 
 ---
+[![Build Status](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday.svg?branch=master)](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday)
+
 
 **个人 LeetCode 练习合集。**
 
@@ -17,6 +19,7 @@
    - [String to Integer (atoi)](#string-to-integer-atoi)
    - [Palindrome Number](#palindrome-number)
    - [Coin Change](#coin-change)
+   - [Fibonacci Number]()
 
 ## 目前需要使用的数据结构
 
@@ -681,12 +684,13 @@ Output: 2
 
 **Constraints:**
 
-`1 <= coins.length <= 12`
-`1 <= coins[i] <= 231 - 1`
-`0 <= amount <= 104`
+1 <= coins.length <= 12
+1 <= coins[i] <= 2<sup>31</sup> - 1 
+0 <= amount <= 10<sup>4</sup>
 
-先处理处理状态方程，写出递归树，剪枝，
+先处理处理状态方程，写出递归树，最优子结构，
 
+**状态方程**
 $$ 
 f(n) =
 \begin{cases}
@@ -722,7 +726,79 @@ func coinChange(_ coins: [Int], _ amount: Int) -> Int {
 2. **迭代解法(贪心算法)**
 
 ```Swift
-func coinChange(_ coins: [Int], _ amount: Int) -> Int { 
-    let sort = coins.sorted(by: <)
+func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
+    if coins.isEmpty { return -1 }
+	let sort = coins.sorted(by: >)
+    var res = Int.max
+        
+    func helper(index: Int, amount: Int, coinCount: Int) {
+        let coin = sort[index] 
+        if amount % coin == 0 {
+            res = min(res, coinCount+amount/coin)
+        } else if index < coins.count - 1 {
+            var needCount = amount/coin
+            while needCount >= 0, needCount+coinCount < res {
+                helper(index: index+1, amount: amount-coin*needCount, coinCount: coinCount+needCount)
+                needCount -= 1
+            }
+        }
+    }
+    helper(index: 0, amount: amount, coinCount: 0)
+    return res == Int.max ? -1 : res
+}
+```
+
+### Fibonacci Number
+
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+
+```Markdown
+F(0) = 0,   F(1) = 1
+F(N) = F(N - 1) + F(N - 2), for N > 1.
+```
+
+**状态方程式**
+
+$$
+f(n) = 
+\begin{cases}
+0, n = 0\\
+1, n = 1, 2\\
+f(n - 1) + f(n - 2), n > 2
+\end{cases}
+$$
+
+**Code**
+
+```Swift
+
+// 带备忘的递归
+func bfFib(_ N: Int) -> Int {
+    var dict = [Int: Int]()
+    dict[0] = 0; dict[1] = 1; dict[2] = 1
+    func helper(_ N: Int) -> Int {
+        guard let value = dict[N] else {
+        let target = bfFib(N - 1) + bfFib(N - 2)
+        dict[N] = target
+        return target
+        }
+        return value
+    }
+    guard N >= 0 else {return 0}
+    return helper(N)
+}
+    
+// 剪枝后迭代
+func fib(_ N: Int) -> Int {
+    if N == 0 { return 0 }
+    if N == 1 || N == 2 { return 1 }
+    var current = 1, prev = 1, index = 3
+    while index <= N {
+        let sum = prev + current
+        prev = current
+        current = sum
+        index += 1
+    }
+    return current
 }
 ```

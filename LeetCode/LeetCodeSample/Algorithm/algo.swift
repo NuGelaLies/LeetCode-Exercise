@@ -7,4 +7,8 @@
 
 import Foundation
 
-struct algo: Algorithm { }
+struct algo: Algorithm {
+   
+}
+
+

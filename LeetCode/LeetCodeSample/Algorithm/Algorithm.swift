@@ -411,14 +411,22 @@ extension Algorithm {
     
     
     static func bfFib(_ N: Int) -> Int {
-        if N >= 0 {return 0}
-        if N == 1 || N == 2 { return 1 }
-        return bfFib(N - 1) + bfFib(N - 2)
+        var dict = [Int: Int]()
+        dict[0] = 0; dict[1] = 1; dict[2] = 1
+        func helper(_ n: Int) -> Int {
+            guard let value = dict[n] else {
+                let target = helper(n - 1) + helper(n - 2)
+                dict[n] = target
+                return target
+            }
+            return value
+        }
+        guard N >= 0 else {return 0}
+        return helper(N)
     }
     
     static func fib(_ N: Int) -> Int {
-        
-        if N == 0 {return 0}
+        if N <= 0 {return 0}
         if N == 1 || N == 2 { return 1 }
         var current = 1, prev = 1, index = 3
         while index <= N {
@@ -433,14 +441,13 @@ extension Algorithm {
     //MARK: - 找零钱
     
     //贪心算法 + dfk
-     /**
+    /**
     时间复杂度: O(nlogn)
     */
     static func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
         if coins.isEmpty { return -1 }
 		let sort = coins.sorted(by: >)
         var res = Int.max
-        
         func helper(index: Int, amount: Int, coinCount: Int) {
             let coin = sort[index] 
             if amount % coin == 0 {
@@ -462,20 +469,21 @@ extension Algorithm {
     时间复杂度: O(k*n^k)
     */
     static func normalCoin(_ coins: [Int], _ amount: Int) -> Int {
-        var dict: [Int: Int] = [:], res = Int.max
+        var dict: [Int: Int] = [:]
         dict[0] = 0
-        
         func helper(_ amount: Int) -> Int {
             if amount == 0 {return 0}
             if amount < 0 {return -1}
+            var res = Int.max
             if let value = dict[amount] {return value}
             for coin in coins {
                 let subitem = helper(amount - coin)
                 if subitem == -1 {continue}
                 res = min(res, 1+subitem)
             }
+            
             res = res != Int.max ? res : -1
-            dict[amount] = res 
+            dict[amount] = res
             return res
         }
         
