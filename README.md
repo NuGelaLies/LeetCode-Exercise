@@ -1,6 +1,8 @@
 # leetCode-for-everyday
 
 ---
+[![Build Status](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday.svg?branch=master)](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday)
+
 
 **个人 LeetCode 练习合集。**
 
