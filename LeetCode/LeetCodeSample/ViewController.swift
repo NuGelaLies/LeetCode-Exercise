@@ -8,12 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = algo.normalCoin([1,2,5], 11)
+ 
     }
-
-
+    
+    
 }
 

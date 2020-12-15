@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23213AAA2588646E0033F6C6 /* DataStructureTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23213AA92588646E0033F6C6 /* DataStructureTest.swift */; };
 		234C2C2A2586FE2800D38F71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C292586FE2800D38F71 /* AppDelegate.swift */; };
 		234C2C2C2586FE2800D38F71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C2B2586FE2800D38F71 /* SceneDelegate.swift */; };
 		234C2C2E2586FE2800D38F71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C2D2586FE2800D38F71 /* ViewController.swift */; };
@@ -19,7 +20,6 @@
 		234C2C732586FE9700D38F71 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C642586FE9700D38F71 /* TreeNode.swift */; };
 		234C2C742586FE9700D38F71 /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C652586FE9700D38F71 /* BinaryTree.swift */; };
 		234C2C752586FE9700D38F71 /* LinkedList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C672586FE9700D38F71 /* LinkedList+Extensions.swift */; };
-		234C2C762586FE9700D38F71 /* LinkNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C692586FE9700D38F71 /* LinkNode+Extension.swift */; };
 		234C2C772586FE9700D38F71 /* LinkedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C6A2586FE9700D38F71 /* LinkedNode.swift */; };
 		234C2C782586FE9700D38F71 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C6B2586FE9700D38F71 /* LinkedList.swift */; };
 		234C2C792586FE9700D38F71 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C6D2586FE9700D38F71 /* Queue.swift */; };
@@ -28,6 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		23213AAC2588646E0033F6C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1AB94B2255E16DD000C165C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 234C2C262586FE2800D38F71;
+			remoteInfo = LeetCodeSample;
+		};
 		234C2C3D2586FE2A00D38F71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1AB94B2255E16DD000C165C /* Project object */;
@@ -38,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23213AA72588646E0033F6C6 /* DataStructureTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataStructureTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23213AA92588646E0033F6C6 /* DataStructureTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructureTest.swift; sourceTree = "<group>"; };
+		23213AAB2588646E0033F6C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234C2C272586FE2800D38F71 /* LeetCodeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetCodeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		234C2C292586FE2800D38F71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		234C2C2B2586FE2800D38F71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +64,6 @@
 		234C2C642586FE9700D38F71 /* TreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		234C2C652586FE9700D38F71 /* BinaryTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		234C2C672586FE9700D38F71 /* LinkedList+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LinkedList+Extensions.swift"; sourceTree = "<group>"; };
-		234C2C692586FE9700D38F71 /* LinkNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LinkNode+Extension.swift"; sourceTree = "<group>"; };
 		234C2C6A2586FE9700D38F71 /* LinkedNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedNode.swift; sourceTree = "<group>"; };
 		234C2C6B2586FE9700D38F71 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		234C2C6D2586FE9700D38F71 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -63,6 +72,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		23213AA42588646E0033F6C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		234C2C242586FE2800D38F71 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23213AA82588646E0033F6C6 /* DataStructureTest */ = {
+			isa = PBXGroup;
+			children = (
+				23213AA92588646E0033F6C6 /* DataStructureTest.swift */,
+				23213AAB2588646E0033F6C6 /* Info.plist */,
+			);
+			path = DataStructureTest;
+			sourceTree = "<group>";
+		};
 		234C2C282586FE2800D38F71 /* LeetCodeSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +173,6 @@
 		234C2C682586FE9700D38F71 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				234C2C692586FE9700D38F71 /* LinkNode+Extension.swift */,
 				234C2C6A2586FE9700D38F71 /* LinkedNode.swift */,
 			);
 			path = Nodes;
@@ -174,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				234C2C282586FE2800D38F71 /* LeetCodeSample */,
+				23213AA82588646E0033F6C6 /* DataStructureTest */,
 				234C2C3F2586FE2A00D38F71 /* LeetCodeSampleTests */,
 				E1AB94BB255E16DD000C165C /* Products */,
 			);
@@ -184,6 +209,7 @@
 			children = (
 				234C2C272586FE2800D38F71 /* LeetCodeSample.app */,
 				234C2C3C2586FE2A00D38F71 /* LeetCodeSampleTests.xctest */,
+				23213AA72588646E0033F6C6 /* DataStructureTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,6 +217,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		23213AA62588646E0033F6C6 /* DataStructureTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23213AAE2588646E0033F6C6 /* Build configuration list for PBXNativeTarget "DataStructureTest" */;
+			buildPhases = (
+				23213AA32588646E0033F6C6 /* Sources */,
+				23213AA42588646E0033F6C6 /* Frameworks */,
+				23213AA52588646E0033F6C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23213AAD2588646E0033F6C6 /* PBXTargetDependency */,
+			);
+			name = DataStructureTest;
+			productName = DataStructureTest;
+			productReference = 23213AA72588646E0033F6C6 /* DataStructureTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		234C2C262586FE2800D38F71 /* LeetCodeSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 234C2C4E2586FE2A00D38F71 /* Build configuration list for PBXNativeTarget "LeetCodeSample" */;
@@ -235,6 +279,10 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					23213AA62588646E0033F6C6 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 234C2C262586FE2800D38F71;
+					};
 					234C2C262586FE2800D38F71 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -259,11 +307,19 @@
 			targets = (
 				234C2C262586FE2800D38F71 /* LeetCodeSample */,
 				234C2C3B2586FE2A00D38F71 /* LeetCodeSampleTests */,
+				23213AA62588646E0033F6C6 /* DataStructureTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		23213AA52588646E0033F6C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		234C2C252586FE2800D38F71 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +340,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		23213AA32588646E0033F6C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23213AAA2588646E0033F6C6 /* DataStructureTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		234C2C232586FE2800D38F71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,7 +359,6 @@
 				234C2C742586FE9700D38F71 /* BinaryTree.swift in Sources */,
 				234C2C2E2586FE2800D38F71 /* ViewController.swift in Sources */,
 				234C2C2A2586FE2800D38F71 /* AppDelegate.swift in Sources */,
-				234C2C762586FE9700D38F71 /* LinkNode+Extension.swift in Sources */,
 				234C2C752586FE9700D38F71 /* LinkedList+Extensions.swift in Sources */,
 				234C2C792586FE9700D38F71 /* Queue.swift in Sources */,
 				234C2C2C2586FE2800D38F71 /* SceneDelegate.swift in Sources */,
@@ -316,6 +379,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		23213AAD2588646E0033F6C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 234C2C262586FE2800D38F71 /* LeetCodeSample */;
+			targetProxy = 23213AAC2588646E0033F6C6 /* PBXContainerItemProxy */;
+		};
 		234C2C3E2586FE2A00D38F71 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 234C2C262586FE2800D38F71 /* LeetCodeSample */;
@@ -343,6 +411,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		23213AAF2588646E0033F6C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HQM3B5227;
+				INFOPLIST_FILE = DataStructureTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nugelalies.DataStructureTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeetCodeSample.app/LeetCodeSample";
+			};
+			name = Debug;
+		};
+		23213AB02588646E0033F6C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HQM3B5227;
+				INFOPLIST_FILE = DataStructureTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nugelalies.DataStructureTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeetCodeSample.app/LeetCodeSample";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		234C2C4F2586FE2A00D38F71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -551,6 +664,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		23213AAE2588646E0033F6C6 /* Build configuration list for PBXNativeTarget "DataStructureTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23213AAF2588646E0033F6C6 /* Debug */,
+				23213AB02588646E0033F6C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		234C2C4E2586FE2A00D38F71 /* Build configuration list for PBXNativeTarget "LeetCodeSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

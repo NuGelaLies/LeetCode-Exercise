@@ -17,6 +17,7 @@ class LeetCodeSampleTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
     func testMedianofTwoSortedArrays() throws {
         var nums1 = [1,3], nums2 = [2]
         XCTAssertEqual(algo.findMedianSortedArrays(nums1, nums2), 2)
@@ -38,7 +39,7 @@ class LeetCodeSampleTests: XCTestCase {
         
     }
     
-    func testgreedCoin() throws {
+    func testGreedCoin() throws {
         XCTAssertEqual(algo.greedCoin([1,2,5], 11), 3)
         XCTAssertEqual(algo.greedCoin([1,2,3], 6), 2)
         XCTAssertEqual(algo.greedCoin([1,2,5], 6), 2)
@@ -89,7 +90,7 @@ class LeetCodeSampleTests: XCTestCase {
         
     }
     
-    func testLongest() throws {
+    func testLongestPalindrome() throws {
         XCTAssertEqual(algo.longestPalindrome("babad"), "bab")
         XCTAssertEqual(algo.longestPalindrome("a"), "a")
         XCTAssertEqual(algo.longestPalindrome("cbbd"), "bb")
@@ -117,7 +118,6 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.myAtoi("words and 987"), 0)
         XCTAssertEqual(algo.myAtoi("-91283472332"), -2147483648)
         XCTAssertEqual(algo.myAtoi("91283472332"), 2147483647)
-        
     }
     
     func testBFfib() throws {
@@ -129,7 +129,6 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.bfFib(5), 5)
         XCTAssertEqual(algo.bfFib(6), 8)
         XCTAssertEqual(algo.bfFib(7), 13)
-        
     }
     
     func testFib() throws {
@@ -142,8 +141,40 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.fib(6), 8)
         XCTAssertEqual(algo.fib(7), 13)
         XCTAssertEqual(algo.fib(-6), 0)
-        
     }
+    
+    func testAddTwoNum() throws {
+//        Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+//        Output: 7 -> 0 -> 8
+        let head1 = LinkedNode<Int>(0)
+        let head2 = LinkedNode<Int>(0)
+        var temp = head1
+        [2, 4, 3].forEach {
+            let item = LinkedNode<Int>($0)
+            temp.next = item
+            temp = item
+        }
+        temp = head2
+        [5, 6, 4, 1, 4].forEach {
+            let item = LinkedNode<Int>($0)
+            temp.next = item
+            temp = item
+        }
+        var node = algo.addTwoNum(default: 0, lhs: head1.next, rhs: head2.next)
+        var items = [Int]()
+        while node != nil {
+            items.append(node!.val)
+            node = node?.next
+        }
+
+        XCTAssertEqual(items.count, 5)
+        XCTAssertEqual(items[0], 7)
+        XCTAssertEqual(items[1], 0)
+        XCTAssertEqual(items[2], 8)
+        XCTAssertEqual(items[3], 1)
+        XCTAssertEqual(items[4], 4)
+    }
+    
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
