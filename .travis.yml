@@ -1,14 +1,12 @@
 language: swift
 osx_image: xcode12.2
-#xcode_destination: platform=iOS Simulator,OS=14.2,name=iPhone 12
 cache:
 - bundler
 sudo: false
-#xcode_project: LeetCode/LeetCodeSample.xcodeproj
 env:
 global:
 - LC_CTYPE=en_US.UTF-8
 - LANG=en_US.UTF-8
 script:
 - set -o pipefail
-- xcodebuild -project LeetCode/LeetCodeSample.xcodeproj -scheme LeetCodeSample -sdk iphonesimulator14.2 ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+- xcodebuild -project LeetCode/LeetCodeSample.xcodeproj -scheme LeetCodeSample -destination "platform=iOS Simulator,OS=14.2,name=iPhone 12" -sdk iphonesimulator14.1 ONLY_ACTIVE_ARCH=NO test | xcpretty -c
