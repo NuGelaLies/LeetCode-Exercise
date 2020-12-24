@@ -197,6 +197,15 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertTrue(algo.intToRoman(410) == "CDX")
     }
     
+    func test3Sum() throws {
+        let items = [-1,0,1,2,-1,-4]
+        XCTAssertEqual(algo.threeSum(items).count, 2)
+        XCTAssertEqual(algo.threeSum(items)[0], [-1,-1,2])
+        XCTAssertEqual(algo.threeSum(items)[1], [-1,0,1])
+        XCTAssertEqual(algo.threeSum([]), [])
+        XCTAssertEqual(algo.threeSum([0]), [])
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

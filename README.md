@@ -21,7 +21,8 @@
    - [Coin Change](#coin-change)
    - [Fibonacci Number](#)
    - [Binary Search](#binary-search)
-   - [Container With Most Water](#)
+   - [Container With Most Water](#container-with-most-water)
+   - [intger To Roman](#intger-to-roman)
 
 ## 目前需要使用的数据结构
 
@@ -870,4 +871,130 @@ func maxArea(_ height: [Int]) -> Int {
 }
 ```
 
+### Intger to Roman 
 
+For example, `2` is written as `II` in Roman numeral, just two one's added together. `12` is written as `XII`, which is simply `X + II`. The number `27` is written as `XXVII`, which is `XX + V + II`.
+
+Symbol | Value 
+------ | ------
+I      |   1
+V      |   5
+X      |   10
+L      |   50
+C      |   100
+D      |   500
+M      |   1000
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not `IIII`. Instead, the number four is written as `IV`. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as `IX`. There are six instances where subtraction is used:
+
+`I` can be placed before `V (5)` and `X (10)` to make 4 and 9. 
+`X` can be placed before `L (50)` and `C (100)` to make 40 and 90. 
+`C` can be placed before `D (500)` and `M (1000)` to make 400 and 900.
+
+**Code**
+
+```Swift
+// Roman to int 一样
+func intToRoman(_ num: Int) -> String { //穷举
+    var sb = "", sum = num
+    while sum > 0 {
+        if sum >= 1000 {
+            sb.append("M");
+            sum -= 1000;
+        } else if sum >= 900 {
+            sb.append("CM");
+            sum -= 900;
+        } else if sum >= 500 {
+            sb.append("D");
+            sum -= 500;
+        } else if sum >= 400 {
+            sb.append("CD");
+            sum -= 400;
+        } else if sum >= 100 {
+            sb.append("C");
+            sum -= 100;
+        } else if sum >= 90 {
+            sb.append("XC");
+            sum -= 90;
+        } else if sum >= 50 {
+            sb.append("L");
+            sum -= 50;
+        } else if sum >= 40 {
+            sb.append("XL");
+            sum -= 40;
+        } else if sum >= 10 {
+            sb.append("X");
+            sum -= 10;
+        } else if sum >= 9 {
+            sb.append("IX");
+            sum -= 9;
+        } else if sum >= 5 {
+            sb.append("V");
+            sum -= 5;
+        } else if sum >= 4 {
+            sb.append("IV");
+            sum -= 4;
+        } else if sum >= 1 {
+            sb.append("I");
+            sum -= 1;
+        }
+    }
+    return sb
+}
+```
+
+### 3Sum
+
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Notice that the solution set must not contain duplicate triplets.
+
+**Example**
+
+```Markdown
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+```
+
+**Code**
+
+```Swift
+
+func threeSum(_ nums: [Int]) -> [[Int]] {
+    var res = [[Int]]()
+  
+    guard nums.count >= 3 else {
+      return res
+    }
+  
+    let nums = nums.sorted()
+  
+    for i in 0..<nums.count - 2 {
+        if i > 0 && nums[i] == nums[i - 1] {
+            continue
+        }
+        let firstNum = nums[i], remainingSum = -firstNum
+        var m = i + 1, n = nums.count - 1
+      
+        while m < n {
+            if nums[m] + nums[n] == remainingSum {
+                res.append([firstNum, nums[m], nums[n]])
+              
+                repeat {
+                    m += 1
+                } while nums[m] == nums[m - 1] && m < n
+              
+                repeat {
+                    n -= 1
+                } while nums[n] == nums[n + 1] && m < n
+            } else if nums[m] + nums[n] < remainingSum {
+                m += 1
+            } else {
+                n -= 1
+            }
+        }
+    }
+    return res
+}
+
+```
