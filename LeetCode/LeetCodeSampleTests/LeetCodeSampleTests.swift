@@ -182,8 +182,19 @@ class LeetCodeSampleTests: XCTestCase {
     }
     
     func testMaxArea() throws {
-        let items = [7,3,5,6,7,8,9,0,9]
-        XCTAssertTrue(algo.maxArea(items) == 56)
+        let items = [10,3,11,6,7,8,9,0,6]
+        XCTAssertTrue(algo.maxArea(items) == 54)
+    }
+    
+    func testIntToRoman() throws {
+        XCTAssertTrue(algo.intToRoman(1203) == "MCCIII")
+        XCTAssertTrue(algo.intToRoman(3) == "III")
+        XCTAssertTrue(algo.intToRoman(4) == "IV")
+        XCTAssertTrue(algo.intToRoman(9) == "IX")
+        XCTAssertTrue(algo.intToRoman(58) == "LVIII")
+        XCTAssertTrue(algo.intToRoman(1994) == "MCMXCIV")
+        XCTAssertTrue(algo.intToRoman(540) == "DXL")
+        XCTAssertTrue(algo.intToRoman(410) == "CDX")
     }
     
     func testPerformanceExample() throws {

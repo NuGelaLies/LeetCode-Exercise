@@ -521,6 +521,54 @@ extension Algorithm {
         }
         return result
     }
+    
+    //MARK: - Integer to Roman
+    static func intToRoman(_ num: Int) -> String {
+        var sb = "", sum = num
+        while sum > 0 {
+           if sum >= 1000 {
+               sb.append("M");
+               sum -= 1000;
+           } else if sum >= 900 {
+               sb.append("CM");
+               sum -= 900;
+           } else if sum >= 500 {
+               sb.append("D");
+               sum -= 500;
+           } else if sum >= 400 {
+               sb.append("CD");
+               sum -= 400;
+           } else if sum >= 100 {
+               sb.append("C");
+               sum -= 100;
+           } else if sum >= 90 {
+               sb.append("XC");
+               sum -= 90;
+           } else if sum >= 50 {
+               sb.append("L");
+               sum -= 50;
+           } else if sum >= 40 {
+               sb.append("XL");
+               sum -= 40;
+           } else if sum >= 10 {
+               sb.append("X");
+               sum -= 10;
+           } else if sum >= 9 {
+               sb.append("IX");
+               sum -= 9;
+           } else if sum >= 5 {
+               sb.append("V");
+               sum -= 5;
+           } else if sum >= 4 {
+               sb.append("IV");
+               sum -= 4;
+           } else if sum >= 1 {
+               sb.append("I");
+               sum -= 1;
+           }
+       }
+       return sb
+    }
 }
 
 
