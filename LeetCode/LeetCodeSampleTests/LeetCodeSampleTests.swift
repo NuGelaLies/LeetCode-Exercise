@@ -177,9 +177,13 @@ class LeetCodeSampleTests: XCTestCase {
     
     func testBinarySearch() throws {
         let items = [-1,0,3,5,9,12]
-        
         XCTAssertEqual(algo.binarySearch(items, 9), 4)
         XCTAssertEqual(algo.binarySearch(items, 2), -1)
+    }
+    
+    func testMaxArea() throws {
+        let items = [7,3,5,6,7,8,9,0,9]
+        XCTAssertTrue(algo.maxArea(items) == 56)
     }
     
     func testPerformanceExample() throws {

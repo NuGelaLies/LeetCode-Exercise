@@ -21,6 +21,7 @@
    - [Coin Change](#coin-change)
    - [Fibonacci Number](#)
    - [Binary Search](#binary-search)
+   - [Container With Most Water](#)
 
 ## 目前需要使用的数据结构
 
@@ -845,4 +846,28 @@ func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
     return -1
 }
 ```
+
+### Container With Most Water
+
+Given n non-negative integers `a1, a2, ..., an` , where each represents a point at coordinate `(i, ai)`. n vertical lines are drawn such that the two endpoints of the line `i` is at `(i, ai)` and `(i, 0)`. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+
+**Code**
+
+```Swift
+func maxArea(_ height: [Int]) -> Int {
+    var result = Int.min, left = 0, right = height.count - 1
+    while left < right {
+      let leftvalue = height[left], rightValue = height[right]
+      let value = min(leftvalue, rightValue) * (right - left)
+      result = max(value, result)
+      if leftvalue > rightValue {
+          right -= 1
+      } else {
+          left += 1
+      }
+    }
+  return result
+}
+```
+
 

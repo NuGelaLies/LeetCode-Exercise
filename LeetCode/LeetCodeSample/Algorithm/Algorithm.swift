@@ -505,6 +505,22 @@ extension Algorithm {
         }
         return -1
     }
+    
+    static func maxArea(_ height: [Int]) -> Int {
+        var result = Int.min, left = 0, right = height.count - 1
+        
+        while left < right {
+            let leftvalue = height[left], rightValue = height[right]
+            let value = min(leftvalue, rightValue) * (right - left)
+            result = max(value, result)
+            if leftvalue > rightValue {
+                right -= 1
+            } else {
+                left += 1
+            }
+        }
+        return result
+    }
 }
 
 
