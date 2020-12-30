@@ -66,7 +66,6 @@ class LeetCodeSampleTests: XCTestCase {
         
     }
     
-    
     func testTwoSum() throws {
         XCTAssertEqual(algo.twoSum(9, elements: [2,7,11,15]), [0, 1])
         XCTAssertEqual(algo.twoSum(6, elements: [3,2,4]), [1, 2])
@@ -107,7 +106,6 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.reverse(21474836400), 463847412)
         XCTAssertEqual(algo.reverse(7463847412), 2147483647)
         XCTAssertEqual(algo.reverse(-8463847412), -2147483648)
-        
     }
     
     func testStringtoInteger() throws {
@@ -204,6 +202,15 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.threeSum(items)[1], [-1,0,1])
         XCTAssertEqual(algo.threeSum([]), [])
         XCTAssertEqual(algo.threeSum([0]), [])
+    }
+    
+    func test3SumClosest() throws {
+        let items = [-1,0,1,2,-1,-4]
+        XCTAssertEqual(algo.threeSumClosest(items).count, 2)
+        XCTAssertEqual(algo.threeSumClosest(items)[0], [-1,-1,2])
+        XCTAssertEqual(algo.threeSumClosest(items)[1], [-1,0,1])
+        XCTAssertEqual(algo.threeSumClosest([]), [])
+        XCTAssertEqual(algo.threeSumClosest([0]), [])
     }
     
     func testPerformanceExample() throws {

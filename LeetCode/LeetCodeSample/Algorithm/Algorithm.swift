@@ -35,7 +35,7 @@ extension Algorithm {
         }
         return []
     }
-
+    
     //MARK: - add Two Num
     /**
      You are given two non-empty linked lists representing two non-negative integers. The digits are
@@ -209,8 +209,8 @@ extension Algorithm {
 
      Input: nums1 = [2], nums2 = []
      Output: 2.00000
-
      */
+    
     static func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
         let aCount = nums1.count, bCount = nums2.count
         var left = 0 , right = 0, aIndex = 0, bIndex = 0
@@ -570,6 +570,42 @@ extension Algorithm {
        return sb
     }
     
+    //MARK: -3Sum
+    
+    static func threeSumClosest(_ nums: [Int]) -> [[Int]] {
+        guard nums.count >= 3 else { return [] }
+        
+        var res: [[Int]] = []
+        let sorted = nums.sorted()
+        
+        for i in 0..<nums.count - 2 {
+            if i > 0 && sorted[i] == sorted[i - 1] {
+                continue
+            }
+            var m = i + 1, n = sorted.count - 1
+            let sum = sorted[i], remainingSum = -sum
+            
+            while m < n {
+                if remainingSum == sorted[m] + sorted[n] {
+                    res.append([sum, sorted[m], sorted[n]])
+                    
+                    repeat {
+                        m += 1
+                    } while m < n && sorted[m] == sorted[m - 1]
+                    
+                    repeat {
+                        n -= 1
+                    } while m < n && sorted[n] == sorted[n + 1]
+                    
+                } else if remainingSum < sorted[m] + sorted[n] {
+                    n -= 1
+                } else {
+                    m += 1
+                }
+            }
+        }
+        return res
+    }
     
     //MARK: - 3Sum
     
