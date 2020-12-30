@@ -35,7 +35,7 @@ extension Algorithm {
         }
         return []
     }
-
+    
     //MARK: - add Two Num
     /**
      You are given two non-empty linked lists representing two non-negative integers. The digits are
@@ -209,8 +209,8 @@ extension Algorithm {
 
      Input: nums1 = [2], nums2 = []
      Output: 2.00000
-
      */
+    
     static func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
         let aCount = nums1.count, bCount = nums2.count
         var left = 0 , right = 0, aIndex = 0, bIndex = 0
@@ -488,6 +488,164 @@ extension Algorithm {
         }
         
         return helper(amount)
+    }
+    
+    static func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
+        var left = 0, right = nums.count - 1
+        while left <= right {
+            let mid = (right + left) / 2
+            if nums[mid] == target {
+                return mid
+            }
+            if nums[mid] < target {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        return -1
+    }
+    
+    static func maxArea(_ height: [Int]) -> Int {
+        var result = Int.min, left = 0, right = height.count - 1
+        
+        while left < right {
+            let leftvalue = height[left], rightValue = height[right]
+            let value = min(leftvalue, rightValue) * (right - left)
+            result = max(value, result)
+            if leftvalue > rightValue {
+                right -= 1
+            } else {
+                left += 1
+            }
+        }
+        return result
+    }
+    
+    //MARK: - Integer to Roman
+    static func intToRoman(_ num: Int) -> String {
+        var sb = "", sum = num
+        while sum > 0 {
+           if sum >= 1000 {
+               sb.append("M");
+               sum -= 1000;
+           } else if sum >= 900 {
+               sb.append("CM");
+               sum -= 900;
+           } else if sum >= 500 {
+               sb.append("D");
+               sum -= 500;
+           } else if sum >= 400 {
+               sb.append("CD");
+               sum -= 400;
+           } else if sum >= 100 {
+               sb.append("C");
+               sum -= 100;
+           } else if sum >= 90 {
+               sb.append("XC");
+               sum -= 90;
+           } else if sum >= 50 {
+               sb.append("L");
+               sum -= 50;
+           } else if sum >= 40 {
+               sb.append("XL");
+               sum -= 40;
+           } else if sum >= 10 {
+               sb.append("X");
+               sum -= 10;
+           } else if sum >= 9 {
+               sb.append("IX");
+               sum -= 9;
+           } else if sum >= 5 {
+               sb.append("V");
+               sum -= 5;
+           } else if sum >= 4 {
+               sb.append("IV");
+               sum -= 4;
+           } else if sum >= 1 {
+               sb.append("I");
+               sum -= 1;
+           }
+       }
+       return sb
+    }
+    
+    //MARK: -3Sum
+    
+    static func threeSumClosest(_ nums: [Int]) -> [[Int]] {
+        guard nums.count >= 3 else { return [] }
+        
+        var res: [[Int]] = []
+        let sorted = nums.sorted()
+        
+        for i in 0..<nums.count - 2 {
+            if i > 0 && sorted[i] == sorted[i - 1] {
+                continue
+            }
+            var m = i + 1, n = sorted.count - 1
+            let sum = sorted[i], remainingSum = -sum
+            
+            while m < n {
+                if remainingSum == sorted[m] + sorted[n] {
+                    res.append([sum, sorted[m], sorted[n]])
+                    
+                    repeat {
+                        m += 1
+                    } while m < n && sorted[m] == sorted[m - 1]
+                    
+                    repeat {
+                        n -= 1
+                    } while m < n && sorted[n] == sorted[n + 1]
+                    
+                } else if remainingSum < sorted[m] + sorted[n] {
+                    n -= 1
+                } else {
+                    m += 1
+                }
+            }
+        }
+        return res
+    }
+    
+    //MARK: - 3Sum
+    
+    static func threeSum(_ nums: [Int]) -> [[Int]] {
+        var res = [[Int]]()
+        
+        guard nums.count >= 3 else {
+            return res
+        }
+        
+        let nums = nums.sorted()
+        
+        for i in 0..<nums.count - 2 {
+            if i > 0 && nums[i] == nums[i - 1] {
+                continue
+            }
+            
+            let firstNum = nums[i], remainingSum = -firstNum
+            var m = i + 1, n = nums.count - 1
+            
+            while m < n {
+                if nums[m] + nums[n] == remainingSum {
+                    res.append([firstNum, nums[m], nums[n]])
+                    
+                    repeat {
+                        m += 1
+                    } while nums[m] == nums[m - 1] && m < n
+                    
+                    repeat {
+                        n -= 1
+                    } while nums[n] == nums[n + 1] && m < n
+                } else if nums[m] + nums[n] < remainingSum {
+                    m += 1
+                } else {
+                    n -= 1
+                }
+            }
+        }
+        
+        return res
     }
 }
 

@@ -66,7 +66,6 @@ class LeetCodeSampleTests: XCTestCase {
         
     }
     
-    
     func testTwoSum() throws {
         XCTAssertEqual(algo.twoSum(9, elements: [2,7,11,15]), [0, 1])
         XCTAssertEqual(algo.twoSum(6, elements: [3,2,4]), [1, 2])
@@ -107,7 +106,6 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.reverse(21474836400), 463847412)
         XCTAssertEqual(algo.reverse(7463847412), 2147483647)
         XCTAssertEqual(algo.reverse(-8463847412), -2147483648)
-        
     }
     
     func testStringtoInteger() throws {
@@ -175,6 +173,45 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(items[4], 4)
     }
     
+    func testBinarySearch() throws {
+        let items = [-1,0,3,5,9,12]
+        XCTAssertEqual(algo.binarySearch(items, 9), 4)
+        XCTAssertEqual(algo.binarySearch(items, 2), -1)
+    }
+    
+    func testMaxArea() throws {
+        let items = [10,3,11,6,7,8,9,0,6]
+        XCTAssertTrue(algo.maxArea(items) == 54)
+    }
+    
+    func testIntToRoman() throws {
+        XCTAssertTrue(algo.intToRoman(1203) == "MCCIII")
+        XCTAssertTrue(algo.intToRoman(3) == "III")
+        XCTAssertTrue(algo.intToRoman(4) == "IV")
+        XCTAssertTrue(algo.intToRoman(9) == "IX")
+        XCTAssertTrue(algo.intToRoman(58) == "LVIII")
+        XCTAssertTrue(algo.intToRoman(1994) == "MCMXCIV")
+        XCTAssertTrue(algo.intToRoman(540) == "DXL")
+        XCTAssertTrue(algo.intToRoman(410) == "CDX")
+    }
+    
+    func test3Sum() throws {
+        let items = [-1,0,1,2,-1,-4]
+        XCTAssertEqual(algo.threeSum(items).count, 2)
+        XCTAssertEqual(algo.threeSum(items)[0], [-1,-1,2])
+        XCTAssertEqual(algo.threeSum(items)[1], [-1,0,1])
+        XCTAssertEqual(algo.threeSum([]), [])
+        XCTAssertEqual(algo.threeSum([0]), [])
+    }
+    
+    func test3SumClosest() throws {
+        let items = [-1,0,1,2,-1,-4]
+        XCTAssertEqual(algo.threeSumClosest(items).count, 2)
+        XCTAssertEqual(algo.threeSumClosest(items)[0], [-1,-1,2])
+        XCTAssertEqual(algo.threeSumClosest(items)[1], [-1,0,1])
+        XCTAssertEqual(algo.threeSumClosest([]), [])
+        XCTAssertEqual(algo.threeSumClosest([0]), [])
+    }
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

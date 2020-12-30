@@ -49,7 +49,7 @@ class DataStructureTest: XCTestCase {
     }
     
     func testMergeLinkedNode() throws {
-        let node = LinkedNode<Int>(2)
+        //let node = LinkedNode<Int>(2)
     }
     
     func testQueue() throws {

@@ -2,7 +2,7 @@
 
 ---
 [![Build Status](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday.svg?branch=master)](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday)
-
+[![codecov](https://codecov.io/gh/NuGelaLies/LeetCode-for-everyday/branch/master/graph/badge.svg?token=P26KL416ZX)](https://codecov.io/gh/NuGelaLies/LeetCode-for-everyday)
 
 **个人 LeetCode 练习合集。**
 
@@ -19,7 +19,10 @@
    - [String to Integer (atoi)](#string-to-integer-atoi)
    - [Palindrome Number](#palindrome-number)
    - [Coin Change](#coin-change)
-   - [Fibonacci Number]()
+   - [Fibonacci Number](#)
+   - [Binary Search](#binary-search)
+   - [Container With Most Water](#container-with-most-water)
+   - [intger To Roman](#intger-to-roman)
 
 ## 目前需要使用的数据结构
 
@@ -801,4 +804,197 @@ func fib(_ N: Int) -> Int {
     }
     return current
 }
+```
+
+### Binary Search
+
+Given a sorted (in ascending order) integer array nums of n elements and a `target` value, write a function to search `target` in `nums`. If `target` exists, then return its index, otherwise return `-1`.
+
+二分查找
+
+**Example 1:**
+
+```Markdown
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
+```
+
+**Example 2:**
+
+```Markdown
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
+```
+
+**Code**
+
+```Swift
+func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
+    var left = 0, right = nums.count - 1
+    while left <= right {
+        let mid = (right + left) / 2
+        if nums[mid] == target {
+            return mid
+        }
+        if nums[mid] < target {
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+    return -1
+}
+```
+
+### Container With Most Water
+
+Given n non-negative integers `a1, a2, ..., an` , where each represents a point at coordinate `(i, ai)`. n vertical lines are drawn such that the two endpoints of the line `i` is at `(i, ai)` and `(i, 0)`. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+
+**Code**
+
+```Swift
+func maxArea(_ height: [Int]) -> Int {
+    var result = Int.min, left = 0, right = height.count - 1
+    while left < right {
+      let leftvalue = height[left], rightValue = height[right]
+      let value = min(leftvalue, rightValue) * (right - left)
+      result = max(value, result)
+      if leftvalue > rightValue {
+          right -= 1
+      } else {
+          left += 1
+      }
+    }
+  return result
+}
+```
+
+### Intger to Roman 
+
+For example, `2` is written as `II` in Roman numeral, just two one's added together. `12` is written as `XII`, which is simply `X + II`. The number `27` is written as `XXVII`, which is `XX + V + II`.
+
+Symbol | Value 
+------ | ------
+I      |   1
+V      |   5
+X      |   10
+L      |   50
+C      |   100
+D      |   500
+M      |   1000
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not `IIII`. Instead, the number four is written as `IV`. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as `IX`. There are six instances where subtraction is used:
+
+`I` can be placed before `V (5)` and `X (10)` to make 4 and 9. 
+`X` can be placed before `L (50)` and `C (100)` to make 40 and 90. 
+`C` can be placed before `D (500)` and `M (1000)` to make 400 and 900.
+
+**Code**
+
+```Swift
+// Roman to int 一样
+func intToRoman(_ num: Int) -> String { //穷举
+    var sb = "", sum = num
+    while sum > 0 {
+        if sum >= 1000 {
+            sb.append("M");
+            sum -= 1000;
+        } else if sum >= 900 {
+            sb.append("CM");
+            sum -= 900;
+        } else if sum >= 500 {
+            sb.append("D");
+            sum -= 500;
+        } else if sum >= 400 {
+            sb.append("CD");
+            sum -= 400;
+        } else if sum >= 100 {
+            sb.append("C");
+            sum -= 100;
+        } else if sum >= 90 {
+            sb.append("XC");
+            sum -= 90;
+        } else if sum >= 50 {
+            sb.append("L");
+            sum -= 50;
+        } else if sum >= 40 {
+            sb.append("XL");
+            sum -= 40;
+        } else if sum >= 10 {
+            sb.append("X");
+            sum -= 10;
+        } else if sum >= 9 {
+            sb.append("IX");
+            sum -= 9;
+        } else if sum >= 5 {
+            sb.append("V");
+            sum -= 5;
+        } else if sum >= 4 {
+            sb.append("IV");
+            sum -= 4;
+        } else if sum >= 1 {
+            sb.append("I");
+            sum -= 1;
+        }
+    }
+    return sb
+}
+```
+
+### 3Sum
+
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Notice that the solution set must not contain duplicate triplets.
+
+**Example**
+
+```Markdown
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+```
+
+**Code**
+
+```Swift
+
+func threeSum(_ nums: [Int]) -> [[Int]] {
+    var res = [[Int]]()
+  
+    guard nums.count >= 3 else {
+      return res
+    }
+  
+    let nums = nums.sorted()
+  
+    for i in 0..<nums.count - 2 {
+        if i > 0 && nums[i] == nums[i - 1] {
+            continue
+        }
+        let firstNum = nums[i], remainingSum = -firstNum
+        var m = i + 1, n = nums.count - 1
+      
+        while m < n {
+            if nums[m] + nums[n] == remainingSum {
+                res.append([firstNum, nums[m], nums[n]])
+              
+                repeat {
+                    m += 1
+                } while nums[m] == nums[m - 1] && m < n
+              
+                repeat {
+                    n -= 1
+                } while nums[n] == nums[n + 1] && m < n
+            } else if nums[m] + nums[n] < remainingSum {
+                m += 1
+            } else {
+                n -= 1
+            }
+        }
+    }
+    return res
+}
+
 ```

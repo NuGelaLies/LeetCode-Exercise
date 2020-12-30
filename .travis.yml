@@ -8,3 +8,5 @@ global:
 script:
 - set -o pipefail
 - xcodebuild -project LeetCode/LeetCodeSample.xcodeproj -scheme LeetCodeSample -destination "platform=iOS Simulator,OS=14.2,name=iPhone 12" -sdk iphonesimulator14.2 ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+after_success:
+- bash <(curl -s https://codecov.io/bash)
