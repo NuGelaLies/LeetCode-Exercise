@@ -1,0 +1,4 @@
+coverage_service: cobertura_xml
+xcodeproj: LeetCode/LeetCodeSample.xcodeproj
+scheme: LeetCodeSample
+output_directory: ./
