@@ -1,4 +1,4 @@
-# leetCode-for-everyday
+# leetCode-Exercise
 
 ---
 [![Build Status](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday.svg?branch=master)](https://www.travis-ci.org/NuGelaLies/LeetCode-for-everyday)
