@@ -213,6 +213,17 @@ class LeetCodeSampleTests: XCTestCase {
         XCTAssertEqual(algo.threeSumClosest([0]), [])
     }
     
+    func testminWindow() throws {
+        var s = "ab", t = "a"
+        
+        XCTAssert(algo.minWindow(s, t) == t)
+        
+        s = "a"
+        t = "ab"
+        
+        XCTAssert(algo.minWindow(s, t) == "")
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

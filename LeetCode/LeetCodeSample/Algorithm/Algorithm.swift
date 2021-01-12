@@ -647,6 +647,49 @@ extension Algorithm {
         
         return res
     }
+        
+//    static func colsure<T>(_ s: T, _ t: T, transform: @escaping (() -> T)) -> T {
+//        
+//    }
+    
+    static func minWindow(_ s: String, _ t: String) -> String {
+        guard s.count >= t.count else {return ""}
+        var left = 0, right = 0, match = 0, matchLeft = 0, matchRight = 0, minLength = Int.max
+        let contains = [Character](s)
+        var needs = [Character: Int](), window = [Character: Int]()
+        for c in t {
+            needs[c, default: 0] += 1
+        }
+        
+        while right < s.count {
+            let char = contains[right]
+            right += 1
+            guard let nValue = needs[char] else {continue}
+            window[char, default: 0] += 1
+            
+            if nValue == window[char] {
+                match += 1
+            }
+            
+            while match == window.count {
+                let char1 = contains[left]
+                if right - left < minLength {
+                    matchRight = right
+                    matchLeft = left
+                    minLength = right - left
+                }
+                left += 1
+                guard let wValue = needs[char1] else {continue}
+                
+                if wValue == window[char1] {
+                    match -= 1
+                }
+                window[char1]! -= 1
+            }
+        }
+        return minLength == Int.max ? "" : String(contains[matchLeft..<matchRight])
+    }
 }
+
 
 

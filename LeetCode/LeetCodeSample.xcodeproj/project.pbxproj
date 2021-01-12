@@ -25,6 +25,9 @@
 		234C2C792586FE9700D38F71 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C6D2586FE9700D38F71 /* Queue.swift */; };
 		234C2C7A2586FE9700D38F71 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C6F2586FE9700D38F71 /* Stack.swift */; };
 		234C2C7B2586FE9700D38F71 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C2C702586FE9700D38F71 /* Helper.swift */; };
+		2375BEDA25A400B000573BE0 /* GSD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2375BED925A400B000573BE0 /* GSD.swift */; };
+		237834EA25A6A49F0038B5C3 /* RLThreadQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237834E925A6A49F0038B5C3 /* RLThreadQueue.swift */; };
+		237834EF25A6AB0D0038B5C3 /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237834EE25A6AB0D0038B5C3 /* Protected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		234C2C6D2586FE9700D38F71 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		234C2C6F2586FE9700D38F71 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		234C2C702586FE9700D38F71 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		2375BED925A400B000573BE0 /* GSD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSD.swift; sourceTree = "<group>"; };
+		237834E925A6A49F0038B5C3 /* RLThreadQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLThreadQueue.swift; sourceTree = "<group>"; };
+		237834EE25A6AB0D0038B5C3 /* Protected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protected.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,8 @@
 		234C2C282586FE2800D38F71 /* LeetCodeSample */ = {
 			isa = PBXGroup;
 			children = (
+				237834DD25A6A0C10038B5C3 /* RunLoop */,
+				2375BED825A4009B00573BE0 /* GSD */,
 				234C2C5F2586FE9700D38F71 /* Algorithm */,
 				234C2C622586FE9700D38F71 /* Common */,
 				234C2C292586FE2800D38F71 /* AppDelegate.swift */,
@@ -192,6 +200,23 @@
 				234C2C6F2586FE9700D38F71 /* Stack.swift */,
 			);
 			path = Stack;
+			sourceTree = "<group>";
+		};
+		2375BED825A4009B00573BE0 /* GSD */ = {
+			isa = PBXGroup;
+			children = (
+				2375BED925A400B000573BE0 /* GSD.swift */,
+			);
+			path = GSD;
+			sourceTree = "<group>";
+		};
+		237834DD25A6A0C10038B5C3 /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				237834E925A6A49F0038B5C3 /* RLThreadQueue.swift */,
+				237834EE25A6AB0D0038B5C3 /* Protected.swift */,
+			);
+			path = RunLoop;
 			sourceTree = "<group>";
 		};
 		E1AB94B1255E16DD000C165C = {
@@ -357,8 +382,11 @@
 				234C2C7A2586FE9700D38F71 /* Stack.swift in Sources */,
 				234C2C712586FE9700D38F71 /* algo.swift in Sources */,
 				234C2C742586FE9700D38F71 /* BinaryTree.swift in Sources */,
+				237834EF25A6AB0D0038B5C3 /* Protected.swift in Sources */,
 				234C2C2E2586FE2800D38F71 /* ViewController.swift in Sources */,
+				2375BEDA25A400B000573BE0 /* GSD.swift in Sources */,
 				234C2C2A2586FE2800D38F71 /* AppDelegate.swift in Sources */,
+				237834EA25A6A49F0038B5C3 /* RLThreadQueue.swift in Sources */,
 				234C2C752586FE9700D38F71 /* LinkedList+Extensions.swift in Sources */,
 				234C2C792586FE9700D38F71 /* Queue.swift in Sources */,
 				234C2C2C2586FE2800D38F71 /* SceneDelegate.swift in Sources */,

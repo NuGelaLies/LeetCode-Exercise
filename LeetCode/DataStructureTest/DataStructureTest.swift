@@ -53,7 +53,7 @@ class DataStructureTest: XCTestCase {
     }
     
     func testQueue() throws {
-        let queue = Queue<Int>()
+        let queue = LCQueue<Int>()
         queue.enqueue(1)
         XCTAssert(!queue.isEmpty)
         queue.enqueue(2)
