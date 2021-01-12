@@ -35,7 +35,7 @@ extension Algorithm {
         }
         return []
     }
-
+    
     //MARK: - add Two Num
     /**
      You are given two non-empty linked lists representing two non-negative integers. The digits are
@@ -209,8 +209,8 @@ extension Algorithm {
 
      Input: nums1 = [2], nums2 = []
      Output: 2.00000
-
      */
+    
     static func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
         let aCount = nums1.count, bCount = nums2.count
         var left = 0 , right = 0, aIndex = 0, bIndex = 0
@@ -411,14 +411,22 @@ extension Algorithm {
     
     
     static func bfFib(_ N: Int) -> Int {
-        if N >= 0 {return 0}
-        if N == 1 || N == 2 { return 1 }
-        return bfFib(N - 1) + bfFib(N - 2)
+        var dict = [Int: Int]()
+        dict[0] = 0; dict[1] = 1; dict[2] = 1
+        func helper(_ n: Int) -> Int {
+            guard let value = dict[n] else {
+                let target = helper(n - 1) + helper(n - 2)
+                dict[n] = target
+                return target
+            }
+            return value
+        }
+        guard N >= 0 else {return 0}
+        return helper(N)
     }
     
     static func fib(_ N: Int) -> Int {
-        
-        if N == 0 {return 0}
+        if N <= 0 {return 0}
         if N == 1 || N == 2 { return 1 }
         var current = 1, prev = 1, index = 3
         while index <= N {
@@ -433,14 +441,13 @@ extension Algorithm {
     //MARK: - 找零钱
     
     //贪心算法 + dfk
-     /**
+    /**
     时间复杂度: O(nlogn)
     */
     static func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
         if coins.isEmpty { return -1 }
 		let sort = coins.sorted(by: >)
         var res = Int.max
-        
         func helper(index: Int, amount: Int, coinCount: Int) {
             let coin = sort[index] 
             if amount % coin == 0 {
@@ -462,25 +469,227 @@ extension Algorithm {
     时间复杂度: O(k*n^k)
     */
     static func normalCoin(_ coins: [Int], _ amount: Int) -> Int {
-        var dict: [Int: Int] = [:], res = Int.max
+        var dict: [Int: Int] = [:]
         dict[0] = 0
-        
         func helper(_ amount: Int) -> Int {
             if amount == 0 {return 0}
             if amount < 0 {return -1}
+            var res = Int.max
             if let value = dict[amount] {return value}
             for coin in coins {
                 let subitem = helper(amount - coin)
                 if subitem == -1 {continue}
                 res = min(res, 1+subitem)
             }
+            
             res = res != Int.max ? res : -1
-            dict[amount] = res 
+            dict[amount] = res
             return res
         }
         
         return helper(amount)
     }
+    
+    static func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
+        var left = 0, right = nums.count - 1
+        while left <= right {
+            let mid = (right + left) / 2
+            if nums[mid] == target {
+                return mid
+            }
+            if nums[mid] < target {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        return -1
+    }
+    
+    static func maxArea(_ height: [Int]) -> Int {
+        var result = Int.min, left = 0, right = height.count - 1
+        
+        while left < right {
+            let leftvalue = height[left], rightValue = height[right]
+            let value = min(leftvalue, rightValue) * (right - left)
+            result = max(value, result)
+            if leftvalue > rightValue {
+                right -= 1
+            } else {
+                left += 1
+            }
+        }
+        return result
+    }
+    
+    //MARK: - Integer to Roman
+    static func intToRoman(_ num: Int) -> String {
+        var sb = "", sum = num
+        while sum > 0 {
+           if sum >= 1000 {
+               sb.append("M");
+               sum -= 1000;
+           } else if sum >= 900 {
+               sb.append("CM");
+               sum -= 900;
+           } else if sum >= 500 {
+               sb.append("D");
+               sum -= 500;
+           } else if sum >= 400 {
+               sb.append("CD");
+               sum -= 400;
+           } else if sum >= 100 {
+               sb.append("C");
+               sum -= 100;
+           } else if sum >= 90 {
+               sb.append("XC");
+               sum -= 90;
+           } else if sum >= 50 {
+               sb.append("L");
+               sum -= 50;
+           } else if sum >= 40 {
+               sb.append("XL");
+               sum -= 40;
+           } else if sum >= 10 {
+               sb.append("X");
+               sum -= 10;
+           } else if sum >= 9 {
+               sb.append("IX");
+               sum -= 9;
+           } else if sum >= 5 {
+               sb.append("V");
+               sum -= 5;
+           } else if sum >= 4 {
+               sb.append("IV");
+               sum -= 4;
+           } else if sum >= 1 {
+               sb.append("I");
+               sum -= 1;
+           }
+       }
+       return sb
+    }
+    
+    //MARK: -3Sum
+    
+    static func threeSumClosest(_ nums: [Int]) -> [[Int]] {
+        guard nums.count >= 3 else { return [] }
+        
+        var res: [[Int]] = []
+        let sorted = nums.sorted()
+        
+        for i in 0..<nums.count - 2 {
+            if i > 0 && sorted[i] == sorted[i - 1] {
+                continue
+            }
+            var m = i + 1, n = sorted.count - 1
+            let sum = sorted[i], remainingSum = -sum
+            
+            while m < n {
+                if remainingSum == sorted[m] + sorted[n] {
+                    res.append([sum, sorted[m], sorted[n]])
+                    
+                    repeat {
+                        m += 1
+                    } while m < n && sorted[m] == sorted[m - 1]
+                    
+                    repeat {
+                        n -= 1
+                    } while m < n && sorted[n] == sorted[n + 1]
+                    
+                } else if remainingSum < sorted[m] + sorted[n] {
+                    n -= 1
+                } else {
+                    m += 1
+                }
+            }
+        }
+        return res
+    }
+    
+    //MARK: - 3Sum
+    
+    static func threeSum(_ nums: [Int]) -> [[Int]] {
+        var res = [[Int]]()
+        
+        guard nums.count >= 3 else {
+            return res
+        }
+        
+        let nums = nums.sorted()
+        
+        for i in 0..<nums.count - 2 {
+            if i > 0 && nums[i] == nums[i - 1] {
+                continue
+            }
+            
+            let firstNum = nums[i], remainingSum = -firstNum
+            var m = i + 1, n = nums.count - 1
+            
+            while m < n {
+                if nums[m] + nums[n] == remainingSum {
+                    res.append([firstNum, nums[m], nums[n]])
+                    
+                    repeat {
+                        m += 1
+                    } while nums[m] == nums[m - 1] && m < n
+                    
+                    repeat {
+                        n -= 1
+                    } while nums[n] == nums[n + 1] && m < n
+                } else if nums[m] + nums[n] < remainingSum {
+                    m += 1
+                } else {
+                    n -= 1
+                }
+            }
+        }
+        
+        return res
+    }
+        
+//    static func colsure<T>(_ s: T, _ t: T, transform: @escaping (() -> T)) -> T {
+//        
+//    }
+    
+    static func minWindow(_ s: String, _ t: String) -> String {
+        guard s.count >= t.count else {return ""}
+        var left = 0, right = 0, match = 0, matchLeft = 0, matchRight = 0, minLength = Int.max
+        let contains = [Character](s)
+        var needs = [Character: Int](), window = [Character: Int]()
+        for c in t {
+            needs[c, default: 0] += 1
+        }
+        
+        while right < s.count {
+            let char = contains[right]
+            right += 1
+            guard let nValue = needs[char] else {continue}
+            window[char, default: 0] += 1
+            
+            if nValue == window[char] {
+                match += 1
+            }
+            
+            while match == window.count {
+                let char1 = contains[left]
+                if right - left < minLength {
+                    matchRight = right
+                    matchLeft = left
+                    minLength = right - left
+                }
+                left += 1
+                guard let wValue = needs[char1] else {continue}
+                
+                if wValue == window[char1] {
+                    match -= 1
+                }
+                window[char1]! -= 1
+            }
+        }
+        return minLength == Int.max ? "" : String(contains[matchLeft..<matchRight])
+    }
 }
+
 
 

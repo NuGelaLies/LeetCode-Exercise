@@ -8,7 +8,7 @@
 import Foundation
 
 class Stack<Element> {
-    var array: [Element] = []
+    private var array: [Element] = []
     
     init() {}
     

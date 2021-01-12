@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Queue<Element> {
+class LCQueue<Element> {
     
     var queues: [Element] = []
     

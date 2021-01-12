@@ -1,6 +1,0 @@
-language: swift  #1
-osx_image: xcode12.2 #2
-xcode_project: LeetCodeSample.xcodeproj #3
-xcode_scheme: LeetCodeSample #4
-xcode_sdk: platform=iOS Simulator,OS=14.1,name=iPhone 12 #5
-
