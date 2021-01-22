@@ -9,6 +9,8 @@ import Foundation
 
 protocol Algorithm { }
 
+
+
 extension Algorithm {
     //MARK: - Two Sum
     /**
@@ -24,7 +26,7 @@ extension Algorithm {
      Because nums[0] + nums[1] = 2 + 7 = 9,
      return [0, 1]
      */
-    static func twoSum(_ target: Int, elements: [Int]) -> [Int] {
+    func twoSum(_ target: Int, elements: [Int]) -> [Int] {
         var params = [Int: Int]()
         for (i, item) in elements.enumerated() {
             if let value = params[target - item] {
@@ -50,7 +52,7 @@ extension Algorithm {
      Explanation: 342 + 465 = 807.
      
      */
-    static func addTwoNum<T>(default value: T, lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? where T : FixedWidthInteger & SignedInteger {
+    func addTwoNum<T>(default value: T, lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? where T : FixedWidthInteger & SignedInteger {
         let root = LinkedNode<T>(0)
         var head = root
         var lhc = lhs
@@ -78,7 +80,7 @@ extension Algorithm {
         return root.next
     }
     
-    static func addTwoNum<T>(default value: T, lhs: LinkedList<T>, rhs: LinkedList<T>) -> LinkedList<T> where T : FixedWidthInteger & SignedInteger {
+    func addTwoNum<T>(default value: T, lhs: LinkedList<T>, rhs: LinkedList<T>) -> LinkedList<T> where T : FixedWidthInteger & SignedInteger {
         var node = addTwoNum(default: value, lhs: lhs.head, rhs: rhs.head)
         let list = LinkedList<T>()
         while let nod = node {
@@ -97,7 +99,7 @@ extension Algorithm {
      Input: 1->2->4, 1->3
      Output: 1->1->2->3->4
      */
-    static func mergeNodes<T: Comparable>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? {
+    func mergeNodes<T: Comparable>(lhs: LinkedNode<T>?, rhs: LinkedNode<T>?) -> LinkedNode<T>? {
         guard let lhs = lhs else {
             return rhs
         }
@@ -116,7 +118,7 @@ extension Algorithm {
         return rhs
     }
     
-    static func mergeSloted<T: Comparable>(lhs: LinkedList<T>, rhs: LinkedList<T>) -> LinkedList<T> {
+    func mergeSloted<T: Comparable>(lhs: LinkedList<T>, rhs: LinkedList<T>) -> LinkedList<T> {
         guard let lnode = lhs.head else { return rhs }
         guard let rnode = rhs.head else { return lhs }
         if lnode.val < rnode.val {
@@ -133,7 +135,7 @@ extension Algorithm {
      For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
      */
     
-    static func treeMaxSum<T>(_ root: BTreeNode<T>?) -> T where T: FixedWidthInteger & BinaryInteger {
+    func treeMaxSum<T>(_ root: BTreeNode<T>?) -> T where T: FixedWidthInteger & BinaryInteger {
         
         @discardableResult
         func helper<T>(_ root: BTreeNode<T>?, _ result: inout T) -> T where T: FixedWidthInteger & BinaryInteger {
@@ -153,7 +155,7 @@ extension Algorithm {
     /**
      Given a string s, find the length of the longest substring without repeating characters.
      */
-    static func lengthOfLongestSubstring(_ s: String) -> Int {
+    func lengthOfLongestSubstring(_ s: String) -> Int {
         var maxLength = 0
         var lastStringSatrtIndex = 0
         var currentStringLength = 0
@@ -211,7 +213,7 @@ extension Algorithm {
      Output: 2.00000
      */
     
-    static func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
+    func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
         let aCount = nums1.count, bCount = nums2.count
         var left = 0 , right = 0, aIndex = 0, bIndex = 0
         let length = (aCount + bCount) / 2
@@ -250,7 +252,7 @@ extension Algorithm {
      Example 3:
      
      */
-    static func longestPalindrome(_ s: String) -> String {
+    func longestPalindrome(_ s: String) -> String {
         
         func expand(_ string: [Character], left: Int, right: Int) -> (left: Int, right: Int) {
             var step = 0
@@ -282,7 +284,7 @@ extension Algorithm {
     }
     
     //MARK: - ZigZag Convert
-    static func zigZagconvert(_ s: String, _ numRows: Int) -> String {
+    func zigZagconvert(_ s: String, _ numRows: Int) -> String {
         guard numRows >= 2 && s.count > 1 else {
             return s
         }
@@ -304,7 +306,7 @@ extension Algorithm {
      Given a 32-bit signed integer, reverse digits of an integer.
      */
     
-    static func reverse(_ integer: Int) -> Int {
+    func reverse(_ integer: Int) -> Int {
         guard integer != 0 else {return integer}
         var num = integer, result = 0
         while num != 0 {
@@ -332,7 +334,7 @@ extension Algorithm {
      If no valid conversion could be performed, a zero value is returned.
      */
 
-    static func myAtoi(_ s: String) -> Int {
+    func myAtoi(_ s: String) -> Int {
         var result: Int32 = 0
         var sign = 1, started = false
         for char in s {
@@ -398,7 +400,7 @@ extension Algorithm {
      
      */
     
-    static func isPalindrome(_ x: Int) -> Bool {
+    func isPalindrome(_ x: Int) -> Bool {
         guard x >= 0 else { return false }
         var value = x, temp = 0
         while value != 0 {
@@ -410,7 +412,7 @@ extension Algorithm {
     }
     
     
-    static func bfFib(_ N: Int) -> Int {
+    func bfFib(_ N: Int) -> Int {
         var dict = [Int: Int]()
         dict[0] = 0; dict[1] = 1; dict[2] = 1
         func helper(_ n: Int) -> Int {
@@ -425,7 +427,7 @@ extension Algorithm {
         return helper(N)
     }
     
-    static func fib(_ N: Int) -> Int {
+    func fib(_ N: Int) -> Int {
         if N <= 0 {return 0}
         if N == 1 || N == 2 { return 1 }
         var current = 1, prev = 1, index = 3
@@ -444,7 +446,7 @@ extension Algorithm {
     /**
     时间复杂度: O(nlogn)
     */
-    static func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
+    func greedCoin(_ coins: [Int], _ amount: Int) -> Int {
         if coins.isEmpty { return -1 }
 		let sort = coins.sorted(by: >)
         var res = Int.max
@@ -468,7 +470,7 @@ extension Algorithm {
     /**
     时间复杂度: O(k*n^k)
     */
-    static func normalCoin(_ coins: [Int], _ amount: Int) -> Int {
+    func normalCoin(_ coins: [Int], _ amount: Int) -> Int {
         var dict: [Int: Int] = [:]
         dict[0] = 0
         func helper(_ amount: Int) -> Int {
@@ -490,7 +492,7 @@ extension Algorithm {
         return helper(amount)
     }
     
-    static func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
+    func  binarySearch(_ nums: [Int], _ target: Int) -> Int {
         var left = 0, right = nums.count - 1
         while left <= right {
             let mid = (right + left) / 2
@@ -506,7 +508,7 @@ extension Algorithm {
         return -1
     }
     
-    static func maxArea(_ height: [Int]) -> Int {
+    func maxArea(_ height: [Int]) -> Int {
         var result = Int.min, left = 0, right = height.count - 1
         
         while left < right {
@@ -523,7 +525,7 @@ extension Algorithm {
     }
     
     //MARK: - Integer to Roman
-    static func intToRoman(_ num: Int) -> String {
+    func intToRoman(_ num: Int) -> String {
         var sb = "", sum = num
         while sum > 0 {
            if sum >= 1000 {
@@ -572,7 +574,7 @@ extension Algorithm {
     
     //MARK: -3Sum
     
-    static func threeSumClosest(_ nums: [Int]) -> [[Int]] {
+    func threeSumClosest(_ nums: [Int]) -> [[Int]] {
         guard nums.count >= 3 else { return [] }
         
         var res: [[Int]] = []
@@ -609,7 +611,7 @@ extension Algorithm {
     
     //MARK: - 3Sum
     
-    static func threeSum(_ nums: [Int]) -> [[Int]] {
+    func threeSum(_ nums: [Int]) -> [[Int]] {
         var res = [[Int]]()
         
         guard nums.count >= 3 else {
@@ -644,50 +646,172 @@ extension Algorithm {
                 }
             }
         }
+        return res
+    }
+    
+    func lengthest(_ s: String) -> [String] {
+        
+        let items = Array(s)
+        var result = [Int: Int]()
+        var left = 0, maxLength = Int.min
+        
+        var windows = [Character: Int]()
+        
+        for right in 0..<items.count {
+            let item = items[right]
+            
+            windows[item, default: 0] += 1
+            
+            while windows[item]! > 1 {
+                let litem = items[left]
+                windows[litem]! -= 1
+                left += 1
+            }
+            print(String(items[left...right]))
+            if right - left >= maxLength {
+                maxLength = right - left
+                result[left] = right
+            }
+        }
+        
+        var res = [String]()
+        
+        result.forEach { (k, v) in
+            res.append(String(items[k...v]))
+        }
         
         return res
     }
-        
-//    static func colsure<T>(_ s: T, _ t: T, transform: @escaping (() -> T)) -> T {
-//        
-//    }
     
-    static func minWindow(_ s: String, _ t: String) -> String {
-        guard s.count >= t.count else {return ""}
-        var left = 0, right = 0, match = 0, matchLeft = 0, matchRight = 0, minLength = Int.max
-        let contains = [Character](s)
-        var needs = [Character: Int](), window = [Character: Int]()
+    func minWindow(_ s: String, _ t: String) -> String {
+        if s.isEmpty || t.isEmpty {return ""}
+        
+        var needs = [Character: Int](), windows = [Character: Int]()
+        var left = 0, matchedLeft = 0, matchedRight = 0
+        var matched = 0, minLength = Int.max
+        
+        let items = Array(s)
+        
         for c in t {
             needs[c, default: 0] += 1
         }
         
-        while right < s.count {
-            let char = contains[right]
-            right += 1
-            guard let nValue = needs[char] else {continue}
-            window[char, default: 0] += 1
+        for right in 0..<items.count {
+            let ritem = items[right]
             
-            if nValue == window[char] {
-                match += 1
+            if needs[ritem] == nil {continue}
+            
+            windows[ritem, default: 0] += 1
+            
+            if needs[ritem] == windows[ritem] {
+                matched += 1
             }
             
-            while match == window.count {
-                let char1 = contains[left]
+            while matched == needs.count {
+                let litem = items[left]
+                
                 if right - left < minLength {
-                    matchRight = right
-                    matchLeft = left
+                    matchedLeft = left
+                    matchedRight = right
                     minLength = right - left
+                    print(String(items[left...right]))
                 }
                 left += 1
-                guard let wValue = needs[char1] else {continue}
-                
-                if wValue == window[char1] {
-                    match -= 1
+                if needs[litem] == nil {continue}
+                if needs[litem] == windows[litem] {
+                    matched -= 1
                 }
-                window[char1]! -= 1
+                
+                windows[litem]! -= 1
+            }
+            
+        }
+        return minLength == Int.max ? "" : String(items[matchedLeft...matchedRight])
+    }
+    
+    
+    func checkInclusion(_ s1: String, _ s2: String) -> Bool {
+        
+        if s1.count > s2.count {return false}
+        
+        var left = 0, right = 0, matched = 0
+        let contains = [Character](s2)
+        var needs = [Character: Int](), window = [Character: Int]()
+        for c in s1 {
+            needs[c, default: 0] += 1
+        }
+        
+        while right < s2.count {
+            let char = contains[right]
+            right += 1
+            guard let value = needs[char] else {continue}
+            
+            window[char, default: 0] += 1
+            
+            if value == window[char] {
+                matched += 1
+            }
+            
+            while matched == window.count {
+                
+                let cChar = contains[left]
+                left += 1
+                guard let wValue = needs[cChar] else {continue}
+                
+                if wValue == window[cChar] {
+                    matched -= 1
+                }
+                window[cChar]! -= 1
             }
         }
-        return minLength == Int.max ? "" : String(contains[matchLeft..<matchRight])
+        return false
+    }
+    
+    func hasCycle(_ head: LinkedNode<Int>?) -> Bool {
+        var fast = head?.next?.next
+        var slow = head?.next
+        while(fast != nil && fast !== slow) {
+            slow = slow?.next
+            fast = fast?.next?.next
+        }
+        
+        return fast != nil
+    }
+    
+    func detectCycle(_ head: LinkedNode<Int>?) -> LinkedNode<Int>? {
+        var slow = head?.next
+        var fast = head?.next?.next
+        
+        while fast != nil && fast !== slow {
+            fast = fast?.next?.next
+            slow = slow?.next
+            
+            if fast === slow { break}
+        }
+        
+        if fast == nil || fast?.next == nil {return nil}
+        
+        slow = head
+        while slow !== fast {
+            slow = slow?.next
+            fast = fast?.next
+        }
+        return fast
+    }
+    
+    func reverse(_ items: [Int]) -> [Int] {
+        var copy = items
+        var left = 0
+        var right = items.count - 1
+        
+        while left < right {
+            let temp = copy[left]
+            copy[left] = copy[right]
+            copy[right] = temp
+            right += 1
+            left += 1
+        }
+        return copy
     }
 }
 

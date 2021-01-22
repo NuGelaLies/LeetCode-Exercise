@@ -9,9 +9,12 @@ import XCTest
 @testable import LeetCodeSample
 
 class LeetCodeSampleTests: XCTestCase {
-
+    
+    var algo: Algo!
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        algo = Algo()
     }
 
     override func tearDownWithError() throws {
@@ -215,13 +218,28 @@ class LeetCodeSampleTests: XCTestCase {
     
     func testminWindow() throws {
         var s = "ab", t = "a"
-        
+
         XCTAssert(algo.minWindow(s, t) == t)
-        
+
         s = "a"
         t = "ab"
-        
+
         XCTAssert(algo.minWindow(s, t) == "")
+
+        s = "ADOBECODEBANC"
+        t = "ABC"
+
+        XCTAssert(algo.minWindow(s, t) == "BANC")
+    }
+
+    func testlengthest() throws {
+        let s2 = "ADOBECODEBANC"
+
+        XCTAssertTrue(algo.lengthest(s2).count == 3)
+
+        let s4 = "bbbbbbb"
+
+        XCTAssert(algo.lengthest(s4).count == s4.count)
     }
     
     func testPerformanceExample() throws {
