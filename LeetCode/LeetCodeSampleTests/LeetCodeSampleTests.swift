@@ -235,11 +235,33 @@ class LeetCodeSampleTests: XCTestCase {
     func testlengthest() throws {
         let s2 = "ADOBECODEBANC"
 
-        XCTAssertTrue(algo.lengthest(s2).count == 3)
+        XCTAssertTrue(algo.lengthest(s2).count == 2)
 
         let s4 = "bbbbbbb"
 
         XCTAssert(algo.lengthest(s4).count == s4.count)
+        
+        let s3 = "pwwkee"
+        
+        XCTAssert(algo.lengthest(s3).count == 1)
+        
+        XCTAssertEqual(algo.lengthest(s3).first, "wke")
+    }
+    
+    func testLenghtITS() {
+        XCTAssertEqual(4, algo.lengthOfLIS([10,9,2,5,3,7,101,18]))
+        
+        XCTAssertEqual(3, algo.lengthOfLIS([1,4,3,4,2,3]))
+        
+        XCTAssertEqual(3, algo.lengthOfLIS([1,3,1,2,2,3]))
+        
+    }
+    
+    func testSuperEggDrop() {
+        
+        XCTAssertEqual(3, algo.superEggDrop(2, 6))
+        
+        XCTAssertEqual(4, algo.superEggDrop(3, 14))
     }
     
     func testPerformanceExample() throws {
@@ -249,4 +271,6 @@ class LeetCodeSampleTests: XCTestCase {
         }
     }
 
+    
+    
 }

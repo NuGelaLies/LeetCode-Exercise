@@ -140,7 +140,7 @@ extension Algorithm {
         @discardableResult
         func helper<T>(_ root: BTreeNode<T>?, _ result: inout T) -> T where T: FixedWidthInteger & BinaryInteger {
             guard let root = root else { return 0 }
-            let left = max(0, helper(root.leftNode, &result)), right = max(0, helper(root.rightNode, &result))
+            let left = max(0, helper(root.left, &result)), right = max(0, helper(root.right, &result))
             result = max(result, root.val + left + right)
             return root.val + max(left, right)
         }
@@ -677,7 +677,9 @@ extension Algorithm {
         var res = [String]()
         
         result.forEach { (k, v) in
-            res.append(String(items[k...v]))
+            if v - k == maxLength {
+                res.append(String(items[k...v]))
+            }
         }
         
         return res
@@ -786,7 +788,7 @@ extension Algorithm {
             fast = fast?.next?.next
             slow = slow?.next
             
-            if fast === slow { break}
+            if fast === slow { break }
         }
         
         if fast == nil || fast?.next == nil {return nil}
@@ -808,12 +810,108 @@ extension Algorithm {
             let temp = copy[left]
             copy[left] = copy[right]
             copy[right] = temp
-            right += 1
+            right -= 1
             left += 1
         }
         return copy
     }
+    
+    func lengthOfLIS(_ nums: [Int]) -> Int {
+        if nums.isEmpty {return 0}
+        var plies = 0, items = Array(repeating: 0, count: nums.count)
+        // [6,3,5,10,11,2,9,14,13,7,4,8,12]
+        for i in 0..<nums.count {
+            var left = 0, right = plies
+            let current = nums[i]
+            while left < right {
+                let mid = (right + left) / 2
+                if items[mid] < current {
+                    left = mid + 1
+                } else {
+                    right = mid
+                }
+            }
+            if left == plies {plies += 1}
+            items[left] = current
+        }
+        return plies
+    }
+    
+    func minDistance(_ s1: String, _ s2: String) -> Int {
+        
+        var dpTree = [Int: [Int]]()
+        
+        for i in 0..<s1.count {
+            dpTree[i] = Array(repeating: 0, count: s2.count)
+            dpTree[i]?[0] = i
+        }
+        
+        for j in 0..<s2.count {
+            dpTree[0]?[j] = j
+        }
+        
+        func mindistance(_ v1: Int, _ v2: Int, _ v3: Int) -> Int {
+            return min(min(v1, v2), v3)
+        }
+        
+        func dp(_ v1: Int, _ v2: Int) -> Int {
+            
+            if v1 == -1 { return v2 + 1 }
+            if v2 == -1 { return v1 + 1 }
+            
+            let i1 = s1.index(s1.startIndex, offsetBy: v1)
+            let i2 = s2.index(s2.startIndex, offsetBy: v2)
+            if s1[i1] == s2[i2] {
+                dpTree[v1]![v2] = dp(v1 - 1, v2 - 1) // skip
+            } else {
+                dpTree[v1]![v2] = mindistance(dp(v1 - 1, v2 - 1) + 1, // replace
+                                   dp(v1, v2 - 1) + 1, // insert
+                                   dp(v1 - 1, v2) + 1)  // remove
+            }
+            
+            return dpTree[v1]![v2]
+        }
+       
+        return dp(s1.count - 1, s2.count - 1)
+    }
+    
+    // O(k * log(n))
+    func superEggDrop(_ K: Int, _ N: Int) -> Int {
+        func helper(_ eggs: Int, _ floors: Int) -> Int {
+            if eggs == 1 {return floors}
+            if floors == 0 {return floors}
+            var res = Int.max
+            var low = 0 , high = floors
+            while low <= high {
+                let mid = (low + high) / 2
+                let broken = helper(eggs - 1, mid - 1)
+                let unbroken = helper(eggs, floors - mid)
+                if broken > unbroken {
+                    high = mid - 1
+                    res = min(res, broken + 1)
+                } else {
+                    low = mid + 1
+                    res = min(res, unbroken + 1)
+                }
+            }
+            return res
+        }
+        return helper(K, N)
+    }
+    
+    //O(n)
+    func superEggDrop2(_ K: Int, _ N: Int) -> Int {
+        var dp = Array(repeating: 0, count: K + 1)
+        var res = 0;
+        while dp[K] < N {
+            for i in (1...K).reversed() {
+                dp[i] = dp[i] + dp[i - 1] + 1
+            }
+            res += 1
+        }
+        return res
+    }
+    
+ 
 }
-
-
 

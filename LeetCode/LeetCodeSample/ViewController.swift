@@ -6,23 +6,35 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
    
+    
+    
     let algo = Algo()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  method.syncSerial()
+        let locationmanger = CLLocationManager()
         
-       // asyncConcurrentqueueSample2()
-
-        let s = "bbbbbbb"
-        let r = algo.lengthest(s)
+        locationmanger.requestAlwaysAuthorization()
         
-        print("s == \(r)")
-       
+        locationmanger.delegate = self
+        
     }
  
 }
 
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        
+    }
+    
+}

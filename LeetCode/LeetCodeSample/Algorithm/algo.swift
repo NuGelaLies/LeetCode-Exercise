@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct Algo: Algorithm { }
+struct Algo: Algorithm {
+    
+    static let shared = Algo()
+}
 
 
