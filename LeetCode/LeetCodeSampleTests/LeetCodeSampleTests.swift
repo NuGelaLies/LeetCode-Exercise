@@ -9,9 +9,12 @@ import XCTest
 @testable import LeetCodeSample
 
 class LeetCodeSampleTests: XCTestCase {
-
+    
+    var algo: Algo!
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        algo = Algo()
     }
 
     override func tearDownWithError() throws {
@@ -215,13 +218,50 @@ class LeetCodeSampleTests: XCTestCase {
     
     func testminWindow() throws {
         var s = "ab", t = "a"
-        
+
         XCTAssert(algo.minWindow(s, t) == t)
-        
+
         s = "a"
         t = "ab"
-        
+
         XCTAssert(algo.minWindow(s, t) == "")
+
+        s = "ADOBECODEBANC"
+        t = "ABC"
+
+        XCTAssert(algo.minWindow(s, t) == "BANC")
+    }
+
+    func testlengthest() throws {
+        let s2 = "ADOBECODEBANC"
+
+        XCTAssertTrue(algo.lengthest(s2).count == 2)
+
+        let s4 = "bbbbbbb"
+
+        XCTAssert(algo.lengthest(s4).count == s4.count)
+        
+        let s3 = "pwwkee"
+        
+        XCTAssert(algo.lengthest(s3).count == 1)
+        
+        XCTAssertEqual(algo.lengthest(s3).first, "wke")
+    }
+    
+    func testLenghtITS() {
+        XCTAssertEqual(4, algo.lengthOfLIS([10,9,2,5,3,7,101,18]))
+        
+        XCTAssertEqual(3, algo.lengthOfLIS([1,4,3,4,2,3]))
+        
+        XCTAssertEqual(3, algo.lengthOfLIS([1,3,1,2,2,3]))
+        
+    }
+    
+    func testSuperEggDrop() {
+        
+        XCTAssertEqual(3, algo.superEggDrop(2, 6))
+        
+        XCTAssertEqual(4, algo.superEggDrop(3, 14))
     }
     
     func testPerformanceExample() throws {
@@ -231,4 +271,6 @@ class LeetCodeSampleTests: XCTestCase {
         }
     }
 
+    
+    
 }

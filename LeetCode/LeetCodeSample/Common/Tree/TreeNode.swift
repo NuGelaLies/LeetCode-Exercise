@@ -10,12 +10,22 @@ import Foundation
 class BTreeNode<T: Comparable> {
     
     let val: T
-    var leftNode: BTreeNode<T>?
-    var rightNode: BTreeNode<T>?
+    var left: BTreeNode<T>?
+    var right: BTreeNode<T>?
     init(_ val: T) {
         self.val = val
     }
     
+}
+
+class LinkedBinaryTree<T: Comparable> {
+    let val: T
+    var left: LinkedBinaryTree<T>?
+    var right: LinkedBinaryTree<T>?
+    var next: LinkedBinaryTree<T>?
+    init(_ val: T) {
+        self.val = val
+    }
 }
 
 class MutableTreeNode<T: Comparable> {

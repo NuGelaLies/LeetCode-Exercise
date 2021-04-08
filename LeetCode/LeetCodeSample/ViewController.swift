@@ -6,68 +6,35 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
    
+    
+    
+    let algo = Algo()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  method.syncSerial()
+        let locationmanger = CLLocationManager()
         
-       // asyncConcurrentqueueSample2()
-    }
-    
-    func asyncSerialQueueSample1() {
-        let queue = DispatchQueue(label: "com.nugelalies.SerialQueue")
-        print("Task start - \(Thread.current)")
-        queue.async {
-            print("T1 - \(Thread.current)")
-        }
-
-        queue.async {
-            print("T2 - \(Thread.current)")
-        }
-
-        queue.async {
-            print("T3 - \(Thread.current)")
-        }
-
-        print("Task end - \(Thread.current)")
-
-    }
-    
-    func asyncConcurrentqueueSample2() {
-        let queue = DispatchQueue(label: "com.nugelalies.ConcurrentQueue", attributes: .concurrent)
+        locationmanger.requestAlwaysAuthorization()
         
-        queue.async {
-            print("t1 - \(Thread.current)")
-        }
-        queue.async {
-            print("t2 - \(Thread.current)")
-        }
-        
-        queue.sync {
-            print("t3 - \(Thread.current)")
-        }
-        
-        print("t0 - \(Thread.current)")
-        
-        queue.async {
-            print("t4 - \(Thread.current)")
-        }
-        
-        queue.async {
-            print("t5 - \(Thread.current)")
-        }
-        
-        queue.async {
-            print("t6 - \(Thread.current)")
-        }
-        
-        print("t7 - \(Thread.current)")
+        locationmanger.delegate = self
         
     }
-    
-    
+ 
 }
 
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        
+    }
+    
+}
