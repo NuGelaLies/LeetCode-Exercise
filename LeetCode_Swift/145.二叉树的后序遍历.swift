@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=94 lang=swift
+ * @lc app=leetcode.cn id=145 lang=swift
  *
- * [94] 二叉树的中序遍历
+ * [145] 二叉树的后序遍历
  */
 
 // @lc code=start
@@ -21,15 +21,11 @@
  * }
  */
 class Solution {
-    func inorderTraversal(_ root: TreeNode?) -> [Int] {
+    func postorderTraversal(_ root: TreeNode?) -> [Int] {
+        //MARK: - LRD
         if root == nil {return []}
-        var items = [Int]()
+        return postorderTraversal(root?.left) + postorderTraversal(root?.right) + [root!.val]
 
-        items = inorderTraversal(root?.left)
-        items.append(root!.val)
-        items += inorderTraversal(root?.right)
-
-        return items
     }
 }
 // @lc code=end
