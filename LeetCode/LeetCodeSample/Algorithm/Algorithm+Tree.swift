@@ -9,6 +9,7 @@ import Foundation
 
 extension Algorithm {
     
+    typealias TreeNode = BTreeNode<Int>
     // 二叉树翻转
     func invertTree(_ root: BTreeNode<Int>?) -> BTreeNode<Int>? {
         
@@ -82,17 +83,36 @@ extension Algorithm {
             helper(node?.right)
             res.append("\(node?.val ?? 0)")
         }
-        
-        
         return res.joined()
     }
     
-//    
+//
 //    func deserialize(_ str: String) -> BTreeNode<Int>? {
-//        
-//        
-//        
-//        
-//        
+//
+//
+//
+//
+//
 //    }
+    
+//    func pathSum(_ root: TreeNode?, _ targetSum: Int) -> [[Int]] {
+//            var left = [Int](), right = [Int](), items = [[Int]]()
+//            
+//            func path(_ root: TreeNode?, _ targetSum: Int) -> [Int] {
+//                if root == nil { return [] }
+//                
+//                if root!.left == nil && root!.right == nil {
+//                    if root!.val == targetSum {
+//                        return [root!.val]
+//                    }
+//                    return []
+//                }
+//                left += path(root?.left, targetSum - root!.val)
+//                right += path(root?.right, targetSum - root!.val)
+//            }
+//
+//            if !left.isEmpty { items.append(left)}
+//            if !right.isEmpty { items.append(right)}
+//            return items
+//        }
 }
