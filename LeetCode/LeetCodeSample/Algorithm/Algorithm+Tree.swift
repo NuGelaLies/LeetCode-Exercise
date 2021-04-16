@@ -115,4 +115,18 @@ extension Algorithm {
 //            if !right.isEmpty { items.append(right)}
 //            return items
 //        }
+    
+    
+    
+    func deleteNode(_ root: TreeNode?, _ key: Int) -> TreeNode? {
+            
+        func getMin(_ node: TreeNode?) -> TreeNode? {
+            var left = node
+            while left?.left != nil {
+                left = left?.left
+            }
+            return left
+        }
+        return root
+    }
 }
