@@ -23,8 +23,10 @@
 class Solution {
     func levelOrder(_ root: TreeNode?) -> [[Int]] {
         var items = [[Int]]()
-
+        if root == nil {return items}
+        //MARK: - 递归
         func levelOrder(_ root: TreeNode?, level: Int) {
+            var elements = [Int]()
             if root == nil {return}
 
             if items.count == level {
@@ -35,14 +37,47 @@ class Solution {
                 items[level] = temp
             }
 
-            levelOrder(root?.left, level: level+1)
-            levelOrder(root?.right, level: level+1)
+            if let left = root?.left {
+                levelOrder(left, level: level + 1)
+            }
+
+            if let right = root?.right {
+                levelOrder(right, level: level + 1)
+            }
         }
 
-        levelOrder(root, level: 0)
+        func join(_ left: TreeNode?, _ right: TreeNode?, level: Int) {
+            if left == nil && right == nil { return }
+            var elements = [Int]()
+
+            if let left = left {
+                elements.append(left.val)
+            }
+            if let right = right {
+                elements.append(right.val)
+            }
+
+            if !elements.isEmpty {
+                if items.count == level {
+                    items.append(elements)
+                } else {
+                    var temp = items[level]
+                    temp.append(contentsOf: elements)
+                    items[level] = temp
+                }
+            }
+            join(left?.left, left?.right, level: level + 1)
+            join(right?.left, right?.right, level: level + 1)
+
+        }
+
+       // levelOrder(root, level: 0)
+
+        items.append([root!.val])
+        join(root?.left, root?.right, level: 1)
 
         return items
-
+        
     }
 }
 // @lc code=end

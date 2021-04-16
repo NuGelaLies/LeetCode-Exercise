@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=94 lang=swift
+ * @lc app=leetcode.cn id=100 lang=swift
  *
- * [94] 二叉树的中序遍历
+ * [100] 相同的树
  */
 
 // @lc code=start
@@ -21,7 +21,13 @@
  * }
  */
 class Solution {
-    func inorderTraversal(_ root: TreeNode?) -> [Int] {
+    func isSameTree(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
+        if p == nil && q == nil {return true}
+
+        let left = isSameTree(p?.left, q?.left)
+        let right = isSameTree(p?.right, q?.right)
+        
+        return p?.val == q?.val && left && right
 
     }
 }
