@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=94 lang=swift
+ * @lc app=leetcode.cn id=103 lang=swift
  *
- * [94] 二叉树的中序遍历
+ * [103] 二叉树的锯齿形层序遍历
  */
 
 // @lc code=start
@@ -21,15 +21,8 @@
  * }
  */
 class Solution {
-    func inorderTraversal(_ root: TreeNode?) -> [Int] {
-        if root == nil {return []}
-        var items = [Int]()
+    func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
 
-        items = inorderTraversal(root?.left)
-        items.append(root!.val)
-        items += inorderTraversal(root?.right)
-
-        return items
     }
 }
 // @lc code=end

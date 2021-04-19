@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=94 lang=swift
+ * @lc app=leetcode.cn id=144 lang=swift
  *
- * [94] 二叉树的中序遍历
+ * [144] 二叉树的前序遍历
  */
 
 // @lc code=start
@@ -21,15 +21,17 @@
  * }
  */
 class Solution {
-    func inorderTraversal(_ root: TreeNode?) -> [Int] {
-        if root == nil {return []}
-        var items = [Int]()
+    func preorderTraversal(_ root: TreeNode?) -> [Int] {
+       //MARK:　－　前序遍历　ＤＬＲ　跟节点　->　左子树　->  右子树　
+        var items: [Int] = []
+        if root == nil {return items}
 
-        items = inorderTraversal(root?.left)
         items.append(root!.val)
-        items += inorderTraversal(root?.right)
+        items += preorderTraversal(root?.left)
+        items += preorderTraversal(root?.right)
 
         return items
+       
     }
 }
 // @lc code=end

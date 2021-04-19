@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=94 lang=swift
+ * @lc app=leetcode.cn id=99 lang=swift
  *
- * [94] 二叉树的中序遍历
+ * [99] 恢复二叉搜索树
  */
 
 // @lc code=start
@@ -21,15 +21,8 @@
  * }
  */
 class Solution {
-    func inorderTraversal(_ root: TreeNode?) -> [Int] {
-        if root == nil {return []}
-        var items = [Int]()
+    func recoverTree(_ root: TreeNode?) {
 
-        items = inorderTraversal(root?.left)
-        items.append(root!.val)
-        items += inorderTraversal(root?.right)
-
-        return items
     }
 }
 // @lc code=end
