@@ -120,6 +120,12 @@ extension Algorithm {
     
     func deleteNode(_ root: TreeNode?, _ key: Int) -> TreeNode? {
             
+        let items = [Int]()
+        
+        
+        
+        
+        
         func getMin(_ node: TreeNode?) -> TreeNode? {
             var left = node
             while left?.left != nil {

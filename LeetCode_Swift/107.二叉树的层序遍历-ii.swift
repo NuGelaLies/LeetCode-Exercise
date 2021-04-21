@@ -22,38 +22,28 @@
  */
 class Solution {
     func levelOrderBottom(_ root: TreeNode?) -> [[Int]] {
-        var items = [[Int]]()
-        if root == nil {return items}
+        var items = [[Int]](),res = [[Int]]()
+        func levelOrder(_ root: TreeNode?, _ lv: Int) {
+            guard let root = root else {return}
 
-        func levelOrder(_ left: TreeNode?, _ right: TreeNode?, level: Int) {
-            if left == nil && right == nil {return}
-            
-            var elements = [Int]()
-
-            if let left = left {
-                elements.append(left.val)
-            }
-
-            if let right = right {
-                elements.append(right.val)
-            }
-
-            if !elements.isEmpty {
-                if items.count == level {
-                    items.append(elements)
-                } else {
-                    var temp = items[level]
-                    temp.append(contentsOf: elements)
-                    items[level] = temp
-                }
-            }
-            levelOrder(left?.left, left?.right, level: level+1)
-            levelOrder(right?.left, right?.right, level: level+1)
+            if items.count == lv {
+                items.append([root.val])
+            } else {
+                var temp = items[lv]
+                temp.append(root.val)
+                items[lv] = temp  
+            }  
+            levelOrder(root.left, lv+1)
+            levelOrder(root.right, lv+1)
         }
-        levelOrder(root?.left, root?.right, level: 0)
-        items.reverse()
-        items.append([root!.val])
-        return items
+        levelOrder(root, 0)
+
+
+        for i in items {
+            res.insert(i, at: 0)
+        }
+
+        return res
     }
 }
 // @lc code=end
